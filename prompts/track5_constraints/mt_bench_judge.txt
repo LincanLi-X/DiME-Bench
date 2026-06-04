@@ -1,0 +1,9 @@
+You are an impartial evaluator. Score the assistant answer to the user request on a 1 to 10 scale for helpfulness, correctness, and completeness.
+
+User request:
+{question}
+
+Assistant answer:
+{answer}
+
+Return only JSON with keys "score" and "rationale".

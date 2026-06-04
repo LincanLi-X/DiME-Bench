@@ -1,0 +1,112 @@
+track: track5_constraints
+description: "Track 5: generation quality and constrained generation."
+models:
+  - configs/models/dllm/llada_1_5.yaml
+  - configs/models/dllm/dream_7b.yaml
+  - configs/models/dllm/diffusellama_7b.yaml
+  - name: TESS2
+    family: dllm
+    repo_id: TESS-2/TESS2
+    local_dir: models/checkpoints/dllm/TESS2
+    trust_remote_code: true
+    loader: auto
+    dtype: bfloat16
+    device_map: auto
+    use_chat_template: true
+    requires_auth: false
+    default_max_new_tokens: 512
+  - name: DiffuCoder
+    family: dllm
+    repo_id: apple/DiffuCoder-7B
+    local_dir: models/checkpoints/dllm/DiffuCoder
+    trust_remote_code: true
+    loader: auto
+    dtype: bfloat16
+    device_map: auto
+    use_chat_template: true
+    requires_auth: false
+    default_max_new_tokens: 512
+  - name: DreamCoder
+    family: dllm
+    repo_id: Dream-org/DreamCoder-7B
+    local_dir: models/checkpoints/dllm/DreamCoder
+    trust_remote_code: true
+    loader: auto
+    dtype: bfloat16
+    device_map: auto
+    use_chat_template: true
+    requires_auth: false
+    default_max_new_tokens: 512
+  - configs/models/ar/llama3_8b_instruct.yaml
+  - name: CodeLLaMA-7B-Instruct
+    family: ar
+    repo_id: codellama/CodeLlama-7b-Instruct-hf
+    local_dir: models/checkpoints/ar/CodeLLaMA-7B-Instruct
+    trust_remote_code: false
+    loader: causal_lm
+    dtype: bfloat16
+    device_map: auto
+    use_chat_template: true
+    requires_auth: true
+    default_max_new_tokens: 512
+datasets:
+  mt_bench:
+    repo_id: HuggingFaceH4/mt_bench_prompts
+    fallback_repo_ids:
+      - lmsys/mt_bench_human_judgments
+    split: train
+    sample_size: null
+    sample_seed: 42
+    task_type: open_generation
+    metric: mt_bench_judge_score
+    max_new_tokens: 1024
+    prompt_template: prompts/track5_constraints/mt_bench.txt
+  ifeval:
+    repo_id: google/IFEval
+    subset: null
+    split: train
+    sample_size: 200
+    sample_seed: 42
+    task_type: instruction_constraints
+    metric: ifeval_pass_rate
+    max_new_tokens: 768
+    prompt_template: prompts/track5_constraints/ifeval.txt
+  json_schema:
+    source: local
+    sample_size: null
+    sample_seed: 42
+    task_type: json_schema
+    metric: json_schema_validity
+    max_new_tokens: 512
+    prompt_template: prompts/track5_constraints/json_schema.txt
+  spider:
+    repo_id: xlangai/spider
+    fallback_repo_ids:
+      - spider
+    split: validation
+    sample_size: 200
+    sample_seed: 42
+    task_type: sql_generation
+    metric: sql_execution_accuracy
+    max_new_tokens: 384
+    prompt_template: prompts/track5_constraints/spider_sql.txt
+generation:
+  temperature: 0.0
+  top_p: 1.0
+  do_sample: false
+  batch_size: 1
+  default_max_new_tokens: 512
+  dllm_default_steps: 64
+  max_input_tokens: 4096
+evaluation:
+  primary_decoding: unconstrained_natural_language
+  constrained_decoding: appendix_only
+  mt_bench_judge:
+    enabled: false
+    model: gpt-4o
+    temperature: 0.0
+reporting:
+  output_dir: outputs/track5_constraints
+  log_dir: logs/track5_constraints
+  metric_dir: metrics/track5_constraints
+  trajectory_dir: trajectories/track5_constraints

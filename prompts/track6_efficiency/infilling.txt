@@ -1,0 +1,10 @@
+Generate the missing paragraph between the prefix and suffix.
+Return only the missing paragraph, with no commentary.
+
+Prefix:
+{prefix}
+
+Suffix:
+{suffix}
+
+Missing paragraph:

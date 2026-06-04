@@ -1,0 +1,11 @@
+name: DiffuLLaMA-7B
+family: dllm
+repo_id: diffusionfamily/diffullama
+local_dir: models/checkpoints/dllm/DiffuLLaMA-7B
+trust_remote_code: true
+loader: causal_lm
+dtype: bfloat16
+device_map: auto
+use_chat_template: false
+requires_auth: false
+default_max_new_tokens: 512

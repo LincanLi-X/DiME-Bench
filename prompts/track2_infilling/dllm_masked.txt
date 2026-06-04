@@ -1,0 +1,11 @@
+Fill the masked middle span using both the prefix and suffix.
+Return only text that belongs in the masked span.
+
+Prefix:
+{prefix}
+
+Masked middle span:
+{mask_block}
+
+Suffix:
+{suffix}

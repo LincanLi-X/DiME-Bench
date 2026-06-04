@@ -1,0 +1,11 @@
+name: GPT-2-XL
+family: ar
+repo_id: openai-community/gpt2-xl
+local_dir: models/checkpoints/ar/GPT-2-XL
+trust_remote_code: false
+loader: causal_lm
+dtype: float16
+device_map: auto
+use_chat_template: false
+requires_auth: false
+default_max_new_tokens: 256

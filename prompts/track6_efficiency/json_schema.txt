@@ -1,0 +1,10 @@
+Generate one JSON object that satisfies the schema and task.
+Return JSON only, with no markdown.
+
+Task:
+{task}
+
+Schema:
+{schema}
+
+JSON:

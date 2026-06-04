@@ -1,0 +1,9 @@
+Choose the option that best fills the blank. Return only the letter A or B.
+
+Sentence:
+{sentence}
+
+A. {option_a}
+B. {option_b}
+
+Answer:

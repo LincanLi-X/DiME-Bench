@@ -1,0 +1,11 @@
+You are editing text. Repair the contradiction described in the instruction while preserving all unrelated wording.
+
+Return only the complete edited text. Do not explain the changes.
+
+Instruction:
+{instruction}
+
+Source text:
+{source_text}
+
+Edited text:

@@ -1,0 +1,10 @@
+Fill the missing middle span using both the prefix and suffix.
+Return only the missing middle span. Do not repeat the prefix or suffix. Do not add explanations.
+
+Prefix:
+{prefix}
+
+Suffix:
+{suffix}
+
+Missing middle span:

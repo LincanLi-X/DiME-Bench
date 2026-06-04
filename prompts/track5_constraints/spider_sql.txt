@@ -1,0 +1,12 @@
+Write a SQL query for the question using the given database schema.
+Return only SQL. Do not include markdown or explanations.
+
+Database ID: {db_id}
+
+Schema:
+{schema}
+
+Question:
+{question}
+
+SQL:

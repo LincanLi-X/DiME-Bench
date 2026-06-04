@@ -1,0 +1,118 @@
+track: track2_infilling
+description: "Track 2 text infilling and middle generation benchmark."
+models:
+  - configs/models/dllm/llada_8b.yaml
+  - configs/models/dllm/llada_1_5.yaml
+  - configs/models/dllm/dream_7b.yaml
+  - configs/models/dllm/diffusellama_7b.yaml
+  - name: MDLM
+    family: dllm
+    repo_id: kuleshov-group/mdlm-owt
+    local_dir: models/checkpoints/dllm/MDLM
+    trust_remote_code: true
+    loader: auto
+    dtype: bfloat16
+    device_map: auto
+    use_chat_template: false
+    requires_auth: false
+    default_max_new_tokens: 256
+    notes: "Inline Track 2 entry; add shared model config when model ownership is assigned."
+  - configs/models/ar/llama3_8b_instruct.yaml
+  - configs/models/ar/gpt2_xl.yaml
+  - name: gpt-oss-20b
+    family: ar
+    repo_id: openai/gpt-oss-20b
+    local_dir: models/checkpoints/ar/gpt-oss-20b
+    trust_remote_code: true
+    loader: causal_lm
+    dtype: bfloat16
+    device_map: auto
+    use_chat_template: true
+    requires_auth: false
+    default_max_new_tokens: 512
+    notes: "Dataset-specific AR baseline for arXiv abstract infilling."
+  - name: StarCoder2-7B
+    family: ar_fim
+    repo_id: bigcode/starcoder2-7b
+    local_dir: models/checkpoints/ar/StarCoder2-7B
+    trust_remote_code: false
+    loader: causal_lm
+    dtype: bfloat16
+    device_map: auto
+    use_chat_template: false
+    requires_auth: false
+    default_max_new_tokens: 512
+    fim_template: prompts/track2_infilling/fim_starcoder2.txt
+datasets:
+  wikitext103_sentence:
+    repo_id: Salesforce/wikitext
+    subset: wikitext-103-v1
+    split: validation
+    source: wikitext103
+    domain: encyclopedia
+    task_type: sentence_infilling
+    metric: token_f1
+    sample_size: 200
+    sample_seed: 42
+    max_new_tokens: 96
+    min_span_tokens: 10
+    max_span_tokens: 40
+    prefix_token_budget: 160
+    suffix_token_budget: 160
+    second_ar_baseline: GPT-2-XL
+  cnn_dailymail_paragraph:
+    repo_id: cnn_dailymail
+    subset: "3.0.0"
+    split: validation
+    source: cnn_dailymail
+    domain: news
+    task_type: paragraph_infilling
+    metric: rouge_l
+    sample_size: 200
+    sample_seed: 42
+    max_new_tokens: 256
+    min_span_tokens: 80
+    max_span_tokens: 200
+    prefix_token_budget: 320
+    suffix_token_budget: 320
+    second_ar_baseline: GPT-2-XL
+  arxiv_abstract:
+    repo_id: ccdv/arxiv-summarization
+    subset: null
+    split: validation
+    source: arxiv
+    domain: scientific_abstract
+    task_type: abstract_infilling
+    metric: rouge_l
+    sample_size: 200
+    sample_seed: 42
+    max_new_tokens: 224
+    min_span_tokens: 80
+    max_span_tokens: 150
+    prefix_token_budget: 260
+    suffix_token_budget: 260
+    second_ar_baseline: gpt-oss-20b
+generation:
+  temperature: 0.0
+  top_p: 1.0
+  do_sample: false
+  batch_size: 1
+  default_max_new_tokens: 192
+  dllm_default_steps: 64
+  max_input_tokens: 4096
+  native_dllm_infilling: true
+  truncate_at_end_markers:
+    - "<END_MIDDLE>"
+    - "</middle>"
+    - "Suffix:"
+    - "PREFIX:"
+    - "Prefix:"
+prompt_templates:
+  ar_instruction: prompts/track2_infilling/ar_instruction.txt
+  dllm_masked: prompts/track2_infilling/dllm_masked.txt
+  fim_starcoder2: prompts/track2_infilling/fim_starcoder2.txt
+reporting:
+  output_dir: outputs/track2_infilling
+  log_dir: logs/track2_infilling
+  metric_dir: metrics/track2_infilling
+  trajectory_dir: trajectories/track2_infilling
