@@ -60,7 +60,7 @@ DiME-Bench supports Python 3.10-3.12.
 ### Development installation
 
 ```bash
-git clone https://github.com/DiME-Bench/DiME-Bench.git
+git clone https://github.com/Anonymous/DiME-Bench.git %The original Github User_Name in this link is shown as "Anonymous" for double-blind review
 cd DiME-Bench
 
 python3.12 -m venv .venv
