@@ -1,0 +1,184 @@
+[
+  {
+    "name": "option_direct_letter",
+    "parser_id": "option_letter",
+    "sample": "multiple_choice",
+    "task_type": "multiple_choice",
+    "raw_output": "B",
+    "finish_reason": "stop",
+    "expected_status": "success",
+    "expected_parsed": {"index": 1, "label": "B", "text": "Evaporation", "route": "label"}
+  },
+  {
+    "name": "option_score_mapping",
+    "parser_id": "option_letter",
+    "sample": "multiple_choice",
+    "task_type": "multiple_choice",
+    "raw_output": "{\"Condensation\":-3.0,\"Evaporation\":-0.2,\"Freezing\":-4.0}",
+    "finish_reason": "completed",
+    "expected_status": "success",
+    "expected_parsed": {"index": 1, "label": "B", "text": "Evaporation", "route": "option_scores"}
+  },
+  {
+    "name": "option_exact_text",
+    "parser_id": "option_letter_or_text",
+    "sample": "reasoning_choice",
+    "task_type": "reasoning",
+    "raw_output": "the trophy",
+    "finish_reason": "stop",
+    "expected_status": "success",
+    "expected_parsed": {"index": 0, "label": "A", "text": "the trophy", "route": "exact_text"}
+  },
+  {
+    "name": "option_ambiguous_format",
+    "parser_id": "option_letter",
+    "sample": "multiple_choice",
+    "task_type": "multiple_choice",
+    "raw_output": "A or B",
+    "finish_reason": "stop",
+    "expected_status": "failure",
+    "expected_failure": "parse_error"
+  },
+  {
+    "name": "numeric_latex_fraction",
+    "parser_id": "numeric_answer",
+    "sample": "generation",
+    "task_type": "generation",
+    "raw_output": "The final result is \\boxed{\\frac{1}{2}}.",
+    "finish_reason": "stop",
+    "expected_status": "success",
+    "expected_parsed": {"value": "1/2", "route": "latex_fraction"}
+  },
+  {
+    "name": "numeric_final_marker",
+    "parser_id": "numeric_answer",
+    "sample": "generation",
+    "task_type": "generation",
+    "raw_output": "There are 3 groups. Final answer: 12",
+    "finish_reason": "stop",
+    "expected_status": "success",
+    "expected_parsed": {"value": "12", "route": "answer_marker"}
+  },
+  {
+    "name": "numeric_missing",
+    "parser_id": "numeric_answer",
+    "sample": "generation",
+    "task_type": "generation",
+    "raw_output": "No numerical result was provided.",
+    "finish_reason": "stop",
+    "expected_status": "failure",
+    "expected_failure": "parse_error"
+  },
+  {
+    "name": "code_fenced",
+    "parser_id": "code_extractor",
+    "sample": "generation",
+    "task_type": "code",
+    "raw_output": "```python\n    return x + 1\n```",
+    "finish_reason": "stop",
+    "expected_status": "success",
+    "expected_parsed": {"code": "    return x + 1", "route": "fenced"}
+  },
+  {
+    "name": "code_unclosed_and_length_limited",
+    "parser_id": "code_extractor",
+    "sample": "generation",
+    "task_type": "code",
+    "raw_output": "```python\nreturn x +",
+    "finish_reason": "length",
+    "expected_status": "failure",
+    "expected_failure": "truncated_output",
+    "expected_labels": ["truncated_output", "parse_error"]
+  },
+  {
+    "name": "infill_wrapped_middle",
+    "parser_id": "middle_only",
+    "sample": "infilling",
+    "task_type": "infilling",
+    "raw_output": "Middle span: newly discovered comet",
+    "finish_reason": "stop",
+    "expected_status": "success",
+    "expected_parsed": "newly discovered comet"
+  },
+  {
+    "name": "infill_context_copy",
+    "parser_id": "middle_only",
+    "sample": "infilling",
+    "task_type": "infilling",
+    "raw_output": "The astronomer carefully recorded the",
+    "finish_reason": "stop",
+    "expected_status": "failure",
+    "expected_failure": "context_copy"
+  },
+  {
+    "name": "infill_full_document",
+    "parser_id": "middle_only",
+    "sample": "infilling",
+    "task_type": "infilling",
+    "raw_output": "The astronomer carefully recorded the newly discovered comet before sunrise at the mountain observatory.",
+    "finish_reason": "stop",
+    "expected_status": "failure",
+    "expected_failure": "full_document_output"
+  },
+  {
+    "name": "empty_output",
+    "parser_id": "middle_only",
+    "sample": "infilling",
+    "task_type": "infilling",
+    "raw_output": "   \n",
+    "finish_reason": "stop",
+    "expected_status": "failure",
+    "expected_failure": "empty_output"
+  },
+  {
+    "name": "infill_length_limit",
+    "parser_id": "middle_only",
+    "sample": "infilling",
+    "task_type": "infilling",
+    "raw_output": "newly discovered comet and several additional unfinished",
+    "finish_reason": "length",
+    "expected_status": "failure",
+    "expected_failure": "truncated_output"
+  },
+  {
+    "name": "edit_complete_text",
+    "parser_id": "full_text_edit",
+    "sample": "editing",
+    "task_type": "editing",
+    "raw_output": "Revised text: She goes to school every day.",
+    "finish_reason": "stop",
+    "expected_status": "success",
+    "expected_parsed": "She goes to school every day."
+  },
+  {
+    "name": "raw_instruction_text",
+    "parser_id": "raw_text",
+    "sample": "generation",
+    "task_type": "generation",
+    "raw_output": "  one two three  ",
+    "finish_reason": "stop",
+    "expected_status": "success",
+    "expected_parsed": "one two three"
+  },
+  {
+    "name": "path_delimited",
+    "parser_id": "path_answer",
+    "sample": "reasoning_path",
+    "task_type": "reasoning",
+    "raw_output": "Path: C -> B -> A -> D",
+    "finish_reason": "stop",
+    "expected_status": "success",
+    "expected_parsed": {"nodes": ["C", "B", "A", "D"], "route": "delimited"}
+  },
+  {
+    "name": "runtime_failure_retained",
+    "parser_id": "raw_text",
+    "sample": "generation",
+    "task_type": "generation",
+    "prediction_status": "failure",
+    "raw_output": null,
+    "finish_reason": "error",
+    "expected_status": "failure",
+    "expected_failure": "runtime_error"
+  }
+]

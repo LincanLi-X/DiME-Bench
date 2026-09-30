@@ -1,0 +1,22 @@
+[
+  {
+    "name": "preserve_all_non_target_tokens",
+    "metric": "preservation_score",
+    "expected": 1.0
+  },
+  {
+    "name": "one_excess_edit_out_of_two",
+    "metric": "over_edit_rate",
+    "expected": 0.5
+  },
+  {
+    "name": "exact_reference_edit_success",
+    "metric": "edit_success",
+    "expected": 1.0
+  },
+  {
+    "name": "planning_minus_chain_gap",
+    "metric": "reasoning_regime_gap",
+    "expected": 0.1
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "numeric_decimal_equivalence",
+    "metric": "normalized_exact_match",
+    "prediction": "12.0",
+    "reference": "12",
+    "expected": 1.0
+  },
+  {
+    "name": "numeric_fraction_equivalence",
+    "metric": "normalized_exact_match",
+    "prediction": "0.5",
+    "reference": "1/2",
+    "expected": 1.0
+  },
+  {
+    "name": "token_f1_partial_overlap",
+    "metric": "token_f1",
+    "prediction": "newly comet",
+    "reference": "newly discovered comet",
+    "expected": 0.8
+  },
+  {
+    "name": "rouge_l_order_sensitive",
+    "metric": "rouge_l",
+    "prediction": "a b c",
+    "reference": "a x b c",
+    "expected": 0.8571428571428571
+  },
+  {
+    "name": "rouge_l_reordered",
+    "metric": "rouge_l",
+    "prediction": "a c b",
+    "reference": "a b c",
+    "expected": 0.6666666666666666
+  }
+]
