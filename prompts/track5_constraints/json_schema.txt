@@ -1,9 +1,0 @@
-You must produce only one valid JSON object. Do not include markdown, comments, or explanatory text.
-
-Task:
-{instruction}
-
-JSON Schema:
-{schema_json}
-
-Return the JSON object now.

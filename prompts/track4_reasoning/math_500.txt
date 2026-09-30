@@ -1,7 +1,0 @@
-Solve the math problem. Show concise reasoning and end with exactly one line:
-Final answer: <answer>
-
-Problem:
-{question}
-
-Solution:

@@ -1,7 +1,0 @@
-Solve the grade-school math problem. Show concise reasoning and end with exactly one line:
-Final answer: <number>
-
-Problem:
-{question}
-
-Solution:

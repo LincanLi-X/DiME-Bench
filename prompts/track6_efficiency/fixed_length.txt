@@ -1,7 +1,0 @@
-Write a coherent passage of approximately {target_output_length} tokens about the topic below.
-Return only the passage.
-
-Topic:
-{topic}
-
-Passage:

@@ -1,9 +1,0 @@
-Find the path from the start node to the target node. Return only the node sequence, separated by " -> ".
-
-Graph arms:
-{graph_text}
-
-Start node: {start}
-Target node: {target}
-
-Path:
