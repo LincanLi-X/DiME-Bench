@@ -1,218 +1,410 @@
 # DiME-Bench
 
-DiME-Bench is a mechanism-aware benchmark for discrete diffusion large language models (dLLMs). It evaluates when dLLMs benefit from bidirectional denoising, localized revision, constrained generation, and parallel decoding, rather than only reporting standard autoregressive-style leaderboard scores.
+**DiME-Bench: Mechanism-Oriented Suite for Assessing Inference and
+Capabilities of Diffusion Language Models**
 
-This repository contains the benchmark code, model/track configuration files, prompt templates, runners, parsers, and metrics. It does not include model checkpoints, HuggingFace dataset caches, generated outputs, logs, trajectories, manuscript files, or provisional simulation results.
+DiME-Bench is a mechanism-aware evaluation framework for discrete diffusion
+language models (dLLMs). It measures final-task quality and the behaviors that
+distinguish iterative denoising from left-to-right autoregressive (AR)
+generation: bidirectional conditioning, localized revision, and
+planning-oriented reasoning.
 
-## Repository Layout
+The repository is an installable Python package with frozen data contracts,
+versioned prompts and parsers, AR/dLLM adapters, mechanism diagnostics,
+resumable artifacts, and single- or multi-GPU execution backends.
 
-```text
-DiME-Bench/
-├── requirements.txt
-├── configs/
-│   ├── global.yaml
-│   ├── hardware.yaml
-│   ├── models/
-│   │   ├── ar/
-│   │   └── dllm/
-│   └── tracks/
-├── prompts/
-│   ├── track2_infilling/
-│   ├── track3_editing/
-│   ├── track4_reasoning/
-│   ├── track5_constraints/
-│   └── track6_efficiency/
-├── scripts/
-│   ├── prepare_*.py
-│   ├── check_*.py
-│   ├── run_*.py
-│   └── aggregate_results.py
-└── src/
-    ├── data/
-    ├── metrics/
-    ├── models/
-    ├── parsing/
-    ├── tracks/
-    └── utils/
-```
+> **Status:** research preview. The v1 benchmark protocol is frozen, while the
+> reporting, unified CLI, CI, and public leaderboard layers remain under active
+> development.
 
-## Tracks
+## Highlights
 
-DiME-Bench contains six evaluation tracks:
+- **Four mechanism-aligned tracks.** General capability is a control; text
+  infilling, localized editing, and reasoning structure probe dLLM-specific
+  behavior.
+- **Controlled AR/dLLM comparison.** Models share processed samples, semantic
+  instructions, answer contracts, output budgets, deterministic settings, and
+  failure policy.
+- **Mechanism diagnostics.** Boundary consistency, contradiction, edit
+  success, preservation, over-editing, and reasoning-regime aggregates augment
+  standard task scores.
+- **Auditable artifacts.** Every sample score links to an immutable raw
+  prediction, resolved configuration, prompt hash, dataset hash, model
+  revision, and environment snapshot.
+- **Native dLLM inference.** The LLaDA adapter supports fixed-canvas masked
+  denoising, bounded-middle infilling, configurable NFEs, block length,
+  schedule, and unmasking policy.
+- **Resumable execution.** Prediction-level caching, append-only traces,
+  duplicate protection, worker retries, and isolated model × task directories
+  make interrupted experiments recoverable.
+- **Portable scheduling.** Run sequentially on one GPU, distribute independent
+  jobs across a single multi-GPU node, or generate isolated Slurm scripts.
 
-1. **Track 1: General Capability**  
-   Sanity-check evaluation on knowledge, math, code, commonsense, and instruction following.
+## Benchmark tracks
 
-2. **Track 2: Text Infilling**  
-   Prefix-suffix middle generation, testing bidirectional conditioning.
+| Track | Evaluation role | Representative datasets | Main metrics |
+|---|---|---|---|
+| **1. General Capability** | Calibrate overall model strength | MMLU-Pro, HellaSwag, GSM8K, HumanEval, IFEval | Accuracy, normalized exact match, pass@1, instruction following |
+| **2. Text Infilling** | Test bidirectional prefix/suffix conditioning | WikiText-103, CNN/DailyMail, arXiv abstracts | Token F1, ROUGE-L, BERTScore, boundary consistency, contradiction rate |
+| **3. Text Editing** | Test targeted correction and edit locality | CoNLL-2014, FRUIT, Synthetic Repair | Edit success, preservation, over-edit rate, contradiction reduction |
+| **4. Reasoning** | Contrast chain-style and planning-style structure | GSM8K, MATH-500, WinoGrande, Path-Star | Exact match, option accuracy, path validity, chain/planning averages |
 
-3. **Track 3: Text Editing and Revision**  
-   Localized editing under minimal-change constraints, using edit success, preservation, and over-edit diagnostics.
-
-4. **Track 4: Reasoning Ability**  
-   Separates chaining-style reasoning from planning-style or global-consistency tasks.
-
-5. **Track 5: Generation Quality and Constraints**  
-   Open-ended response quality, instruction constraints, JSON/schema generation, and SQL execution.
-
-6. **Track 6: Efficiency and Decoding Behavior**  
-   Denoising-step, output-length, and batch-size sweeps with trajectory diagnostics such as STR, TRC, and FOE when available.
+See the [human-readable benchmark specification](docs/specification/benchmark-v1.md)
+and the [machine-readable v1 protocol](specification/benchmark-v1.json) for the
+authoritative task-to-metric mapping.
 
 ## Installation
 
-Use Python 3.10+ with CUDA-enabled PyTorch for real model runs.
+DiME-Bench supports Python 3.10-3.12.
+
+### Development installation
 
 ```bash
-python -m venv .venv
+git clone https://github.com/DiME-Bench/DiME-Bench.git
+cd DiME-Bench
+
+python3.12 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
 ```
 
-Some tasks require optional packages or system tools:
+### Optional dependencies
 
-- HumanEval execution uses local Python execution with timeouts.
-- BERTScore is optional for Track 2 and is only computed when the package is available.
-- SQL execution in Track 5 requires SQLite databases for Spider-style samples.
-- Full model runs require local GPU access.
+Install only the backends required by the experiment:
 
-## Model Checkpoints
+```bash
+# Hugging Face datasets and autoregressive models
+python -m pip install -e ".[hf]"
 
-Model configs live under `configs/models/` and track-specific inline configs live in `configs/tracks/*.yaml`. By default, checkpoints are expected under:
+# Masked-diffusion model execution
+python -m pip install -e ".[diffusion]"
+
+# BERTScore, ROUGE, NumPy/SciPy, and related metrics
+python -m pip install -e ".[metrics]"
+
+# Code-execution evaluation support
+python -m pip install -e ".[code]"
+
+# Typical full research environment
+python -m pip install -e ".[dev,hf,diffusion,metrics,code]"
+```
+
+Verify the installation:
+
+```bash
+dimebench --version
+dimebench --help
+```
+
+## Quick start
+
+### 1. Prepare deterministic sample data
+
+The bundled sample mode is small, offline, and intended for schema and pipeline
+validation:
+
+```bash
+dimebench prepare --suite dime_bench_v1
+dimebench data validate data/processed/dime_bench_v1
+```
+
+Each processed split receives content-addressed sample IDs, an ordered dataset
+hash, and a split lock. Repeating preparation with the same manifest, seed, and
+selection parameters produces the same sample set.
+
+Use `--full` for upstream data:
+
+```bash
+dimebench prepare \
+  --suite minimal_4track \
+  --full \
+  --sample-limit 25 \
+  --seed 0
+```
+
+External datasets are downloaded through their declared source adapters.
+Synthetic Repair is generated locally by a frozen deterministic builder; it
+does not require an external download. Datasets with redistribution or access
+restrictions remain manual.
+
+### 2. Inspect prompts without loading a model
+
+```bash
+dimebench task preview \
+  --task wikitext103 \
+  --samples data/processed/dime_bench_v1/wikitext103/test.jsonl \
+  --model-family both \
+  --limit 1
+```
+
+AR and diffusion templates share a semantic contract while retaining the
+format required by each model family. Rendered prompt, template, and semantic
+hashes are stored with every request.
+
+### 3. Run the CPU-only mock pipeline
+
+```bash
+dimebench config validate configs/smoke.yaml
+dimebench infer --config configs/smoke.yaml
+```
+
+Run the same command again to verify prediction-level resume and cache reuse.
+The mock adapter allocates no model weights and is suitable for local
+development and CI.
+
+## Real-model evaluation
+
+Tracked model configurations currently include:
+
+- `meta-llama/Meta-Llama-3-8B-Instruct` through the Hugging Face causal-LM
+  adapter;
+- `GSAI-ML/LLaDA-8B-Instruct` through the native masked-diffusion adapter.
+
+The tracked minimal evaluation matrix runs one selected dataset in every track
+with both models:
+
+| Track | Dataset | Samples | dLLM NFEs |
+|---|---|---:|---:|
+| General capability | GSM8K | 25 | 16 |
+| Text infilling | WikiText-103 | 25 | 16 |
+| Text editing | Synthetic Repair | 25 | 16 |
+| Reasoning | WinoGrande | 25 | 16 |
+
+The matrix is stored in `configs/experiments/minimal_4track.yaml`. It produces
+eight isolated run directories and independently regenerates every score from
+saved raw predictions.
+
+## Configuration
+
+DiME-Bench uses strict YAML configurations. Unknown fields and inconsistent
+cross-references fail before model execution.
 
 ```text
-models/checkpoints/dllm/<model-name>/
-models/checkpoints/ar/<model-name>/
+configs/
+├── models/
+│   ├── autoregressive/
+│   └── diffusion/
+├── tasks/
+│   ├── track1_general/
+│   ├── track2_infilling/
+│   ├── track3_editing/
+│   └── track4_reasoning/
+├── experiments/
+└── runtime/
 ```
 
-Download configured Track 1 models with:
+Typed dotted-key overrides are available for complete run configurations:
 
 ```bash
-python scripts/download_models.py --track track1_general --model all
+dimebench config validate configs/smoke.yaml --set batch_size=4
+dimebench infer \
+  --config configs/smoke.yaml \
+  --set output_dir=/path/to/results
 ```
 
-For gated models, authenticate with HuggingFace first or pass a token through the script option. Large model checkpoints are intentionally not included in this repository.
+The stable configuration hash is computed after all overrides are applied.
 
-## Data Preparation
+## Model adapters and controlled decoding
 
-Processed datasets are written under `data/processed/<track>/<dataset>/`. Dataset caches are not included in this code package.
-
-Prepare Track 1:
-
-```bash
-python scripts/prepare_datasets.py --track track1_general --dataset all
-```
-
-Prepare other tracks:
-
-```bash
-python scripts/prepare_track2_infilling_datasets.py --dataset all
-python scripts/prepare_track3_editing_datasets.py --dataset all
-python scripts/prepare_track4_reasoning_datasets.py --dataset all
-python scripts/prepare_track5_constraints_datasets.py --dataset all
-python scripts/prepare_track6_efficiency_datasets.py --dataset all
-```
-
-Some tracks can use small synthetic or fixture fallbacks for smoke tests. These are useful for checking code paths, but should not be used as final benchmark results unless explicitly intended.
-
-## Setup Checks
-
-Run setup checks before launching long jobs:
-
-```bash
-python scripts/check_track1_setup.py
-python scripts/check_track2_infilling_setup.py --allow-missing-models
-python scripts/check_track3_editing_setup.py --allow-missing
-python scripts/check_track4_reasoning_setup.py --allow-missing-models
-python scripts/check_track5_constraints_setup.py --allow-missing-models
-python scripts/check_track6_efficiency_setup.py --allow-missing-models --allow-missing-upstream
-```
-
-Use the `--allow-*` flags for development machines where not all checkpoints or upstream data are available yet.
-
-## Running Evaluations
-
-Track 1:
-
-```bash
-python scripts/run_track.py --track track1_general --model LLaDA-8B --dataset gsm8k
-python scripts/aggregate_results.py --track track1_general
-```
-
-Track-specific runners:
-
-```bash
-python scripts/run_track2_infilling.py --model LLaDA-8B --dataset wikitext103_sentence
-python scripts/run_track3_editing.py --model LLaDA-8B --dataset synthetic_contradiction_repair
-python scripts/run_track4_reasoning.py --model LLaDA-8B --dataset gsm8k
-python scripts/run_track5_constraints.py --model LLaDA-1.5 --dataset json_schema
-python scripts/run_track6_efficiency.py --model LLaDA-8B --dataset fixed_length --sweep t
-```
-
-Small-run helper scripts are provided for quick development checks:
-
-```bash
-bash scripts/run_track1_small_dataset.sh
-bash scripts/run_track2_infilling_small.sh
-bash scripts/run_track3_editing_small.sh
-bash scripts/run_track4_reasoning_small.sh
-bash scripts/run_track5_constraints_small.sh
-bash scripts/run_track6_efficiency_small.sh
-```
-
-## Outputs
-
-Runners write artifacts to the following directories:
+All model backends implement one lifecycle-safe interface:
 
 ```text
-outputs/<track>/<model>/<dataset>.jsonl
-logs/<track>/<model>/<dataset>.jsonl
-metrics/<track>/<model>/<dataset>.json
-trajectories/<track>/<model>/<dataset>.jsonl
+load -> generate / score_options / denoise -> close
 ```
 
-These output directories are generated at runtime and are not included in this code-only package.
+The common request schema separates prompts from model implementation. AR runs
+use deterministic greedy decoding in the main protocol. Diffusion runs declare
+their denoising steps, schedule, unmasking strategy, mask policy, generation
+canvas, and block length. The benchmark records forward passes, token counts,
+latency, and peak memory instead of treating an AR token step as equivalent to
+a diffusion NFE.
 
-Each output row generally includes:
+See the [controlled-comparison protocol](docs/specification/model-protocol.md).
 
-- `sample_id`
-- `prompt`
-- `model_output`
-- `parsed_output`
-- `reference`
-- `decoding_config`
-- `score`
-- `error`
+## Evaluation and mechanism diagnostics
 
-## Custom Diagnostics
+Raw model text is retained unchanged. A separate postprocessing stage applies
+versioned parsers and conservative failure detection before metrics run.
 
-DiME-Bench pairs final-answer metrics with mechanism-aware diagnostics:
+Standard metrics include accuracy, normalized exact match, pass@1, IFEval,
+token F1, ROUGE-L, BERTScore F1, option accuracy, and path validity.
 
-- **Preservation Score:** how much non-target source content is retained during editing.
-- **Over-Edit Rate:** how often the model changes more than the minimum required edit budget.
-- **Stable Token Ratio (STR):** whether newly finalized dLLM tokens already match the final output.
-- **Token Revision Count (TRC):** how many distinct non-mask values a position takes during denoising.
-- **Finalization-Order Entropy (FOE):** whether finalization is spatially dispersed or AR-like.
+Mechanism diagnostics include:
 
-Trajectory metrics require per-step token states and mask-status logs. If a model wrapper cannot expose these, DiME-Bench still reports final task and system metrics while marking trajectory diagnostics as unavailable.
+- **Track 2:** left/right boundary consistency, contradiction rate, span-length
+  and boundary-density stratification;
+- **Track 3:** edit success, preservation score, over-edit rate, and
+  contradiction reduction;
+- **Track 4:** chain average, planning average, and reasoning-regime gap.
 
-## Reproducibility Notes
+Neural NLI diagnostics use revision-pinned Transformers checkpoints. Missing
+semantic inputs produce an explicit `null` with coverage metadata rather than
+silently removing the sample. Failed primary-task predictions remain in the
+denominator with a score of zero. Exact definitions are in
+[metric-definitions.md](docs/specification/metric-definitions.md).
 
-- Default seed: `42`.
-- Default dLLM denoising budget: `T=64`, except Track 6 sweeps.
-- Default decoding is deterministic: temperature `0.0`, top-p `1.0`, and no sampling.
-- AR baselines use greedy decoding with dataset-specific output budgets.
-- Track configs fix sample sizes, prompt templates, max token budgets, and reporting paths.
+## Run artifacts
 
-## What Is Not Included
+A fully evaluated model × task run owns a private directory:
 
-This code package intentionally excludes:
+```text
+outputs/<run_id>/
+├── run_manifest.json
+├── environment.json
+├── predictions.jsonl
+├── inference-trace.jsonl
+├── postprocessed-results.jsonl
+├── sample_metrics.jsonl
+├── summary.json
+├── evaluation-report.json
+└── recomputed/
+    ├── postprocessed-results.jsonl
+    ├── sample_metrics.jsonl
+    └── summary.json
+```
 
-- model checkpoints under `models/checkpoints/`
-- HuggingFace caches under `data/hf_cache/`
-- processed datasets and benchmark outputs
-- logs, metrics, trajectories, reports, and figures
-- manuscript `.tex` files and bibliography assets
-- provisional internal simulation tables
+The manifest stores the resolved configuration, model/tokenizer revisions,
+adapter version, dataset and ordered-sample hashes, environment, and hashes of
+the canonical artifacts. `sample_metrics.jsonl` links each score to the exact
+prediction hash. Final summaries retain contributing sample IDs and coverage.
 
-Regenerate these artifacts from the scripts above when needed.
+## Single- and multi-GPU runners
 
+DiME-Bench provides three execution backends:
+
+- `LocalRunner`: sequential jobs on one GPU;
+- `DistributedRunner`: deterministic, cost-aware data parallelism across GPUs
+  on one node;
+- `SlurmRunner`: isolated sbatch script generation with explicit submission.
+
+Each `BenchmarkJob` represents one unique model × task pair and must own a
+unique output directory. Workers receive an isolated `CUDA_VISIBLE_DEVICES`,
+write per-attempt stdout/stderr logs, and retry without deleting prior
+predictions or checkpoints.
+
+Runtime profiles are tracked under `configs/runtime/`:
+
+```text
+local_1gpu.yaml
+rtx6000_2gpu.yaml
+b200_4gpu.yaml
+```
+
+Minimal Python usage:
+
+```python
+from dimebench.runners import DistributedRunner, load_runtime_config
+
+runtime = load_runtime_config("configs/runtime/rtx6000_2gpu.yaml")
+runner = DistributedRunner(runtime, log_dir="outputs/worker-logs")
+report = runner.run(jobs)  # tuple[BenchmarkJob, ...]
+```
+
+This is one-process-per-GPU data parallelism across independent benchmark jobs,
+not tensor/model parallelism within one model. Runner contract tests verify
+that sequential and distributed execution produce identical scores and that
+retries preserve durable checkpoints.
+
+## Validation
+
+Validate the frozen protocol and bundled data:
+
+```bash
+python scripts/validate_specification.py
+python scripts/prepare_data.py --suite dime_bench_v1
+python scripts/validate_data.py data/processed/dime_bench_v1
+```
+
+Full local quality checks:
+
+```bash
+ruff check dimebench scripts tests
+mypy dimebench scripts
+pytest -q
+python -m build
+twine check dist/*
+```
+
+Real-model evaluation requires a CUDA-enabled environment and appropriately
+licensed model checkpoints. It is deliberately separate from the default
+CPU-only test suite.
+
+## Repository layout
+
+```text
+dimebench/
+├── configs/               # model, task, experiment, and runtime configs
+├── data/                  # manifests, cards, registry, and small fixtures
+├── dimebench/
+│   ├── artifacts/         # manifests, prediction/metric stores, provenance
+│   ├── config/            # strict YAML loading and overrides
+│   ├── datasets/          # acquisition, normalization, split locking
+│   ├── decoding/          # shared budgets and diffusion sampling
+│   ├── evaluators/        # standard and mechanism-aware metrics
+│   ├── inference/         # batching, cache, retry, resume, traces
+│   ├── models/            # mock, Hugging Face AR, and LLaDA adapters
+│   ├── postprocessors/    # parsers and failure classification
+│   ├── prompts/           # versioned AR/dLLM prompt contracts
+│   ├── runners/           # local, multi-GPU, resource, and Slurm backends
+│   ├── schemas/           # strict public data contracts
+│   ├── tasks/             # track-specific task implementations
+│   └── tracks/            # end-to-end track orchestration
+├── docs/                  # protocol and validation guides
+├── scripts/               # reproducible validation entry points
+├── specification/         # machine-readable benchmark v1
+└── tests/                 # unit, contract, integration, and GPU gates
+```
+
+The outer `dimebench/` is the repository root. The inner `dimebench/` is the
+importable Python package, so users write `import dimebench` after installation.
+
+## Extending DiME-Bench
+
+- **Model:** implement `ModelAdapter`, declare capabilities, register it, and
+  add contract tests plus a revision-pinned model config.
+- **Dataset:** add a source manifest, deterministic preprocessor, license/data
+  card, split lock, and registry entry.
+- **Task:** bind a normalized dataset to a versioned prompt, parser, metrics,
+  and output-token limit.
+- **Metric:** implement a sample-level evaluator with a complete configuration
+  hash and explicit eligibility behavior.
+- **Runtime:** construct isolated `BenchmarkJob` objects or add a scheduler
+  backend without changing inference or scoring semantics.
+
+Changes to sample selection, prompt semantics, parser behavior, metric formulas,
+aggregation, or failure treatment require a benchmark protocol version bump.
+
+## Reproducibility policy
+
+Headline results must retain:
+
+- model and tokenizer revisions;
+- processed dataset manifest and ordered sample hashes;
+- prompt, parser, evaluator, and adapter versions;
+- complete AR/dLLM decoding controls;
+- raw predictions, per-sample metrics, and aggregate contributors;
+- software environment and hardware metadata;
+- explicit failures, null diagnostics, and coverage.
+
+See [failure-policy.md](docs/specification/failure-policy.md) for retry,
+failure-retention, and metric-eligibility rules.
+
+## Citation
+
+The paper citation will be added when the DiME-Bench manuscript is publicly
+released. Until then, please cite the repository URL and the protocol version
+used by your experiment.
+
+## Acknowledgements
+
+The repository organization and configuration-first user experience are
+inspired in part by [OpenCompass](https://github.com/open-compass/opencompass).
+DiME-Bench implements a distinct mechanism-oriented protocol, dLLM decoding
+controls, diagnostics, and AR/dLLM comparison workflow.
+
+## License
+
+DiME-Bench is released under the [Apache License 2.0](LICENSE). Individual
+datasets and model checkpoints remain subject to their original licenses and
+access conditions.
