@@ -42,12 +42,12 @@ resumable artifacts, and single- or multi-GPU execution backends.
 
 ## Benchmark tracks
 
-| Track | Evaluation role | Representative datasets | Main metrics |
-|---|---|---|---|
-| **1. General Capability** | Calibrate overall model strength | MMLU-Pro, HellaSwag, GSM8K, HumanEval, IFEval | Accuracy, normalized exact match, pass@1, instruction following |
-| **2. Text Infilling** | Test bidirectional prefix/suffix conditioning | WikiText-103, CNN/DailyMail, arXiv abstracts | Token F1, ROUGE-L, BERTScore, boundary consistency, contradiction rate |
-| **3. Text Editing** | Test targeted correction and edit locality | CoNLL-2014, FRUIT, Synthetic Repair | Edit success, preservation, over-edit rate, contradiction reduction |
-| **4. Reasoning** | Contrast chain-style and planning-style structure | GSM8K, MATH-500, WinoGrande, Path-Star | Exact match, option accuracy, path validity, chain/planning averages |
+| Track                     | Evaluation role                                   | Representative datasets                       | Main metrics                                                 |
+| ------------------------- | ------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------ |
+| **1. General Capability** | Calibrate overall model strength                  | MMLU-Pro, HellaSwag, GSM8K, HumanEval, IFEval | Accuracy, normalized exact match, pass@1, instruction following |
+| **2. Text Infilling**     | Test bidirectional prefix/suffix conditioning     | WikiText-103, CNN/DailyMail, arXiv abstracts  | Token F1, ROUGE-L, BERTScore, boundary consistency, contradiction rate |
+| **3. Text Editing**       | Test targeted correction and edit locality        | CoNLL-2014, FRUIT, Synthetic Repair           | Edit success, preservation, over-edit rate, contradiction reduction |
+| **4. Reasoning**          | Contrast chain-style and planning-style structure | GSM8K, MATH-500, WinoGrande, Path-Star        | Exact match, option accuracy, path validity, chain/planning averages |
 
 See the [human-readable benchmark specification](docs/specification/benchmark-v1.md)
 and the [machine-readable v1 protocol](specification/benchmark-v1.json) for the
@@ -164,12 +164,12 @@ Tracked model configurations currently include:
 The tracked minimal evaluation matrix runs one selected dataset in every track
 with both models:
 
-| Track | Dataset | Samples | dLLM NFEs |
-|---|---|---:|---:|
-| General capability | GSM8K | 25 | 16 |
-| Text infilling | WikiText-103 | 25 | 16 |
-| Text editing | Synthetic Repair | 25 | 16 |
-| Reasoning | WinoGrande | 25 | 16 |
+| Track              | Dataset          | Samples | dLLM NFEs |
+| ------------------ | ---------------- | ------: | --------: |
+| General capability | GSM8K            |      25 |        16 |
+| Text infilling     | WikiText-103     |      25 |        16 |
+| Text editing       | Synthetic Repair |      25 |        16 |
+| Reasoning          | WinoGrande       |      25 |        16 |
 
 The matrix is stored in `configs/experiments/minimal_4track.yaml`. It produces
 eight isolated run directories and independently regenerates every score from
