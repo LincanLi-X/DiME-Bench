@@ -1,0 +1,11 @@
+id: arxiv_abstracts
+track: track2_infilling
+dataset_id: arxiv_abstracts
+type: infilling
+prompt_id: track2.infilling
+prompt_version: "1.0.0"
+parser_id: middle_only
+parser_version: "1.0.0"
+metrics: [bertscore_f1, boundary_consistency, contradiction_rate]
+primary_metric: bertscore_f1
+max_output_tokens: 512

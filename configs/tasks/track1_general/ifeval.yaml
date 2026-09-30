@@ -1,0 +1,11 @@
+id: ifeval
+track: track1_general
+dataset_id: ifeval
+type: generation
+prompt_id: track1.instruction_following
+prompt_version: "1.0.0"
+parser_id: raw_text
+parser_version: "1.0.0"
+metrics: [instruction_following_rate]
+primary_metric: instruction_following_rate
+max_output_tokens: 512

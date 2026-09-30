@@ -1,0 +1,11 @@
+id: hellaswag
+track: track1_general
+dataset_id: hellaswag
+type: multiple_choice
+prompt_id: track1.multiple_choice
+prompt_version: "1.0.0"
+parser_id: option_letter
+parser_version: "1.0.0"
+metrics: [accuracy]
+primary_metric: accuracy
+max_output_tokens: 8

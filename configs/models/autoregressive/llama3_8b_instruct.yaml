@@ -1,0 +1,23 @@
+id: llama3-8b-instruct
+family: autoregressive
+adapter: huggingface
+adapter_version: 1.0.0
+name_or_path: meta-llama/Meta-Llama-3-8B-Instruct
+revision: main
+tokenizer_revision: main
+dtype: bfloat16
+device: auto
+trust_remote_code: false
+capabilities:
+  - generate
+  - score_options
+  - infill
+  - edit
+  - reasoning
+adapter_kwargs:
+  use_chat_template: true
+  option_separator: " "
+  model_load_kwargs:
+    low_cpu_mem_usage: true
+  generation_kwargs:
+    use_cache: true

@@ -1,0 +1,12 @@
+id: winogrande_planning
+track: track4_reasoning
+dataset_id: winogrande_planning
+type: reasoning
+prompt_id: track4.direct_answer
+prompt_version: "1.0.0"
+parser_id: option_letter_or_text
+parser_version: "1.0.0"
+metrics: [option_accuracy, planning_average]
+primary_metric: option_accuracy
+max_output_tokens: 16
+reasoning_type: planning

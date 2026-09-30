@@ -1,0 +1,57 @@
+schema_version: "1.0"
+benchmark_id: dime_bench_v1
+run_id: smoke_diffusion_infilling
+seed: 7
+deterministic: true
+batch_size: 2
+output_dir: outputs
+
+model:
+  id: mock-dllm
+  family: diffusion
+  adapter: mock
+  name_or_path: builtin/mock-dllm
+  revision: v1
+  dtype: float32
+  device: cpu
+  capabilities:
+    - generate
+    - infill
+
+dataset:
+  id: smoke_infilling
+  source: builtin
+  name_or_path: smoke/infilling
+  revision: v1
+  split: test
+  sample_limit: 4
+  shuffle: false
+  seed: 7
+
+task:
+  id: smoke_infilling
+  track: track2_infilling
+  dataset_id: smoke_infilling
+  type: infilling
+  prompt_id: track2.infilling
+  prompt_version: 1.0.0
+  parser_id: middle_only
+  parser_version: 1.0.0
+  metrics:
+    - token_f1
+    - boundary_consistency
+  primary_metric: token_f1
+  max_output_tokens: 32
+
+decoding:
+  max_new_tokens: 32
+  temperature: 0.0
+  do_sample: false
+  denoising_steps: 8
+  unmasking_strategy: confidence_based
+  schedule: linear
+  mask_policy: bounded_middle
+
+tags:
+  - smoke
+  - smoke
