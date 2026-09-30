@@ -1,0 +1,34 @@
+schema_version: "1.0"
+id: track3.editing
+version: "1.0.0"
+track: track3_editing
+sample_kind: editing
+semantic:
+  instruction: Apply the requested localized revision while preserving unrelated source content.
+  input_fields: [instruction, evidence, source_text]
+  output_contract: Return the complete revised text only, without commentary.
+  answer_visibility: hidden
+templates:
+  autoregressive: |-
+    Edit the source according to the instruction and evidence. Preserve all unrelated content. Return only the complete revised text.
+
+    Instruction:
+    {instruction}
+
+    Evidence:
+    {evidence}
+
+    Source text:
+    {source_text}
+
+    Revised text:
+  diffusion: |-
+    Revise the source under the stated constraints. Keep non-target content fixed whenever possible. Return the complete revised text only.
+
+    [EDIT INSTRUCTION]
+    {instruction}
+    [EVIDENCE]
+    {evidence}
+    [SOURCE]
+    {source_text}
+    [REVISED TEXT]

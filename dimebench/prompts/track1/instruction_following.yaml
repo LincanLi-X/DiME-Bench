@@ -1,0 +1,29 @@
+schema_version: "1.0"
+id: track1.instruction_following
+version: "1.0.0"
+track: track1_general
+sample_kind: generation
+semantic:
+  instruction: Follow every explicit constraint in the supplied user instruction.
+  input_fields: [context, instruction]
+  output_contract: Return only the requested response while satisfying all stated constraints.
+  answer_visibility: hidden
+templates:
+  autoregressive: |-
+    Follow the instruction exactly, including every formatting constraint.
+
+    Context:
+    {context}
+
+    Instruction:
+    {instruction}
+
+    Response:
+  diffusion: |-
+    Produce the requested response and satisfy every stated constraint.
+
+    [CONTEXT]
+    {context}
+    [INSTRUCTION]
+    {instruction}
+    [RESPONSE]

@@ -1,0 +1,29 @@
+schema_version: "1.0"
+id: track1.code_completion
+version: "1.0.0"
+track: track1_general
+sample_kind: generation
+semantic:
+  instruction: Complete the supplied Python function so that it satisfies its specification.
+  input_fields: [context, instruction]
+  output_contract: Return only the Python completion, without Markdown fences or explanation.
+  answer_visibility: hidden
+templates:
+  autoregressive: |-
+    Complete the Python function. Return only the code completion without Markdown fences.
+
+    Additional context:
+    {context}
+
+    Function prefix:
+    {instruction}
+
+    Completion:
+  diffusion: |-
+    Fill the missing Python completion. Produce code only, without Markdown fences or commentary.
+
+    [CONTEXT]
+    {context}
+    [FUNCTION PREFIX]
+    {instruction}
+    [CODE COMPLETION]

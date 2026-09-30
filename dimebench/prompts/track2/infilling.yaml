@@ -1,0 +1,30 @@
+schema_version: "1.0"
+id: track2.infilling
+version: "1.0.0"
+track: track2_infilling
+sample_kind: infilling
+semantic:
+  instruction: Reconstruct the missing middle span using both the prefix and suffix boundaries.
+  input_fields: [prefix, suffix]
+  output_contract: Return only the missing middle span, excluding the supplied prefix and suffix.
+  answer_visibility: hidden
+templates:
+  autoregressive: |-
+    Reconstruct the missing text between the prefix and suffix. Use both boundaries. Return only the missing middle span.
+
+    Prefix:
+    {prefix}
+
+    Suffix:
+    {suffix}
+
+    Missing middle:
+  diffusion: |-
+    Reconstruct only the masked middle span between the fixed boundaries.
+
+    <FIXED_PREFIX>
+    {prefix}
+    <MASKED_MIDDLE>
+    <FIXED_SUFFIX>
+    {suffix}
+    <MIDDLE_OUTPUT>

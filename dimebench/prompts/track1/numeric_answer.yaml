@@ -1,0 +1,29 @@
+schema_version: "1.0"
+id: track1.numeric_answer
+version: "1.0.0"
+track: track1_general
+sample_kind: generation
+semantic:
+  instruction: Solve the supplied quantitative problem without exposing chain-of-thought.
+  input_fields: [context, instruction]
+  output_contract: Return only the final numeric answer.
+  answer_visibility: hidden
+templates:
+  autoregressive: |-
+    Solve the problem. Return only the final numeric answer, with no explanation.
+
+    Context:
+    {context}
+
+    Problem:
+    {instruction}
+
+    Final answer:
+  diffusion: |-
+    Determine the final numeric answer for the problem. Fill only the answer field; do not include reasoning.
+
+    [CONTEXT]
+    {context}
+    [PROBLEM]
+    {instruction}
+    [FINAL ANSWER]

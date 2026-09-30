@@ -1,0 +1,29 @@
+schema_version: "1.0"
+id: track4.direct_answer
+version: "1.0.0"
+track: track4_reasoning
+sample_kind: reasoning
+semantic:
+  instruction: Solve the supplied reasoning problem using deterministic direct-answer prompting.
+  input_fields: [problem, choices]
+  output_contract: Return only the final answer, without reasoning or explanation.
+  answer_visibility: hidden
+templates:
+  autoregressive: |-
+    Solve the problem. Return only the final answer; do not provide reasoning or explanation.
+
+    Problem:
+    {problem}
+
+    Answer choices, if any:
+    {choices}
+
+    Final answer:
+  diffusion: |-
+    Determine the direct final answer. Fill only the answer field and do not expose intermediate reasoning.
+
+    [PROBLEM]
+    {problem}
+    [CHOICES, IF ANY]
+    {choices}
+    [FINAL ANSWER]
