@@ -1,0 +1,21 @@
+schema_version: "1.0"
+id: ifeval
+display_name: IFEval
+version: dime-v1
+track: track1_general
+record_kind: generation
+license: Apache-2.0
+homepage: https://huggingface.co/datasets/google/IFEval
+citation: zhou2023ifeval
+source:
+  type: huggingface
+  name_or_path: google/IFEval
+  revision: main
+splits: [train]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: generation
+  field_map:
+    instruction: prompt
+    references: prompt
+notes: Instruction checker arguments are retained in metadata during final preprocessing.

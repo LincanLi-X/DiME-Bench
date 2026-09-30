@@ -1,0 +1,23 @@
+schema_version: "1.0"
+id: mmlu_pro
+display_name: MMLU-Pro
+version: dime-v1
+track: track1_general
+record_kind: multiple_choice
+license: See upstream dataset card
+homepage: https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro
+citation: wang2024mmlupro
+source:
+  type: huggingface
+  name_or_path: TIGER-Lab/MMLU-Pro
+  revision: main
+splits: [test]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: multiple_choice
+  field_map:
+    question: question
+    choices: options
+    answer_index: answer
+    category: category
+notes: Pin the upstream revision to a commit before a release split is frozen.

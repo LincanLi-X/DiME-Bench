@@ -1,0 +1,25 @@
+schema_version: "1.0"
+id: wikitext103
+display_name: WikiText-103 infilling
+version: dime-v1
+track: track2_infilling
+record_kind: infilling
+license: Creative Commons Attribution-ShareAlike 4.0
+homepage: https://huggingface.co/datasets/Salesforce/wikitext
+citation: merity2017pointer
+source:
+  type: huggingface
+  name_or_path: Salesforce/wikitext
+  subset: wikitext-103-v1
+  revision: main
+splits: [test]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: infilling
+  field_map:
+    text: text
+  parameters:
+    domain: encyclopedia
+    skip_short: true
+    min_words: 9
+notes: Empty and heading-only rows are filtered deterministically.

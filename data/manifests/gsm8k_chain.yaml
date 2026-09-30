@@ -1,0 +1,24 @@
+schema_version: "1.0"
+id: gsm8k_chain
+display_name: GSM8K chain reasoning
+version: dime-v1
+track: track4_reasoning
+record_kind: reasoning
+license: MIT
+homepage: https://huggingface.co/datasets/openai/gsm8k
+citation: cobbe2021gsm8k
+source:
+  type: huggingface
+  name_or_path: openai/gsm8k
+  subset: main
+  revision: main
+splits: [test]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: reasoning
+  field_map:
+    problem: question
+    answer: answer
+  parameters:
+    reasoning_type: chain
+notes: Direct-answer prompting is added by the Task layer, not the data layer.

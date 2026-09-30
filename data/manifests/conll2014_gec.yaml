@@ -1,0 +1,25 @@
+schema_version: "1.0"
+id: conll2014_gec
+display_name: CoNLL-2014 GEC
+version: dime-v1
+track: track3_editing
+record_kind: editing
+license: Restricted by upstream shared-task terms
+homepage: https://www.comp.nus.edu.sg/~nlp/conll14st.html
+citation: ng2014conll
+source:
+  type: manual
+  instructions: Obtain the CoNLL-2014 test set under its original terms and provide normalized JSONL.
+splits: [test]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: editing
+  field_map:
+    source_text: source_text
+    instruction: instruction
+    reference_edit: reference_edit
+    target_spans: target_spans
+    non_target_spans: non_target_spans
+    minimum_edit_distance: minimum_edit_distance
+    edit_type: edit_type
+notes: Raw licensed data is never committed to this repository.

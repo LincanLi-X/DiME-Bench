@@ -1,0 +1,22 @@
+schema_version: "1.0"
+id: pathstar_planning
+display_name: Path-Star planning reasoning
+version: dime-v1
+track: track4_reasoning
+record_kind: reasoning
+license: See upstream repository terms
+homepage: https://arxiv.org/abs/2410.18514
+citation: frydenlund2024pathstar
+source:
+  type: manual
+  instructions: Obtain Path-Star from the authors' release and export problem and valid-path answer fields as JSONL.
+splits: [test]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: reasoning
+  field_map:
+    problem: problem
+    answer: answer
+  parameters:
+    reasoning_type: planning
+notes: Path topology metadata is preserved for the later path-validity evaluator.
