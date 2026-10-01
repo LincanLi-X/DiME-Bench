@@ -74,8 +74,8 @@ python -m pip install -e ".[dev]"
 > is distributed exclusively through an anonymized, read-only repository.
 > Please use the anonymous link below and select **Download ZIP**.
 > 1. Open the [anonymous DiME-Bench repository](https://anonymous.4open.science/r/DiME-Bench-A6F4/).
-> 2. 2. Select **Download ZIP** and extract the downloaded archive.
->    3. 3. Open a terminal in the extracted repository and run:
+> 2. Select **Download ZIP** and extract the downloaded archive.
+> 3. Open a terminal in the extracted repository and run:
 
 ```bash
 cd /path/to/extracted/DiME-Bench
