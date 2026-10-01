@@ -54,7 +54,7 @@ authoritative task-to-metric mapping.
 
 DiME-Bench supports Python 3.10-3.12.
 
-### Development installation ⚠️⚠️ 
+### Development installation❗️❗️ 
 
 > The actual link of DiME-Bench is not given. Below the `User_Name` is shown as "DiME-Bench" to follow the double-blind review rule.
 ```bash
@@ -65,6 +65,24 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
+```
+
+⬇️💡 #### Installation during anonymous review
+
+***During double-blind review period, the source code is distributed through an anonymized, read-only repository.***
+
+1. Open the [anonymous DiME-Bench repository](https://anonymous.4open.science/r/DiME-Bench-A6F4/).
+2. Select **Download ZIP** and extract the downloaded archive.
+3. Open a terminal in the extracted repository and run:
+
+```bash
+cd /path/to/extracted/DiME-Bench
+
+python3.12 -m venv .venv
+source .venv/bin/activate
+
+python -m pip install --upgrade pip
+python -m pip install -e .
 ```
 
 To validate the built release artifact rather than an editable checkout:
