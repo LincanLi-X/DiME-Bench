@@ -13,11 +13,6 @@ The repository is an installable Python package with frozen data contracts,
 versioned prompts and parsers, AR/dLLM adapters, mechanism diagnostics,
 resumable artifacts, and single- or multi-GPU execution backends.
 
-> **Status:** v1.0.0 research release. The frozen benchmark protocol,
-> traceable reporting, paper-reproduction pipeline, versioned result schema,
-> static leaderboard, package artifacts, and CPU test/CI gates are implemented.
-> Uploading the package or container to a public registry remains an explicit
-> maintainer release action.
 
 ## Highlights
 
