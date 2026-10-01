@@ -1,0 +1,45 @@
+{
+  "benchmark_id": "dime_bench_v1",
+  "benchmark_version": "1.0.0",
+  "entries": [
+    {
+      "benchmark_score": 0.32999999999999996,
+      "model_family": "diffusion",
+      "model_id": "llada-8b-instruct",
+      "rank": 1,
+      "source_run_ids": [
+        "step12-track1_general-gsm8k_general-dllm",
+        "step12-track2_infilling-wikitext103-dllm",
+        "step12-track3_editing-synthetic_repair-dllm",
+        "step12-track4_reasoning-winogrande_planning-dllm"
+      ],
+      "track_scores": {
+        "track1_general": 0.48,
+        "track2_infilling": 0.0,
+        "track3_editing": 0.84,
+        "track4_reasoning": 0.0
+      }
+    },
+    {
+      "benchmark_score": 0.16095195983470126,
+      "model_family": "autoregressive",
+      "model_id": "llama3-8b-instruct",
+      "rank": 2,
+      "source_run_ids": [
+        "step12-track1_general-gsm8k_general-ar",
+        "step12-track2_infilling-wikitext103-ar",
+        "step12-track3_editing-synthetic_repair-ar",
+        "step12-track4_reasoning-winogrande_planning-ar"
+      ],
+      "track_scores": {
+        "track1_general": 0.16,
+        "track2_infilling": 0.16380783933880505,
+        "track3_editing": 0.0,
+        "track4_reasoning": 0.32
+      }
+    }
+  ],
+  "schema_version": "1.0",
+  "source_fingerprint": "01df65696481107c698aabbe410504a734f3e44a0ae524848a79b4ae053efc54",
+  "submission_id": "dime-bench-v1-reference"
+}

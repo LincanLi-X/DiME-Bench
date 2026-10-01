@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark": {
+    "id": "dime_bench_v1",
+    "name": "DiME-Bench",
+    "version": "1.0.0",
+    "scope": "text-only discrete diffusion language models and matched autoregressive baselines"
+  },
+  "defaults": {
+    "deterministic": true,
+    "dllm_denoising_steps": 128,
+    "dllm_unmasking": "confidence_based",
+    "preferred_dtype": "bfloat16",
+    "ar_decoding": "greedy",
+    "retain_failures": true
+  },
+  "required_documents": [
+    "docs/specification/benchmark-v1.md",
+    "docs/specification/model-protocol.md",
+    "docs/specification/metric-definitions.md",
+    "docs/specification/failure-policy.md"
+  ],
+  "tracks": [
+    {
+      "id": "track1_general",
+      "name": "General LLM Capability",
+      "role": "calibration_control",
+      "tasks": [
+        {"id": "mmlu_pro", "dataset": "MMLU-Pro", "primary_metric": "accuracy"},
+        {"id": "hellaswag", "dataset": "HellaSwag", "primary_metric": "accuracy"},
+        {"id": "gsm8k_general", "dataset": "GSM8K", "primary_metric": "normalized_exact_match"},
+        {"id": "humaneval", "dataset": "HumanEval", "primary_metric": "pass_at_1"},
+        {"id": "ifeval", "dataset": "IFEval", "primary_metric": "instruction_following_rate"}
+      ],
+      "metric_ids": [
+        "accuracy",
+        "normalized_exact_match",
+        "pass_at_1",
+        "instruction_following_rate"
+      ]
+    },
+    {
+      "id": "track2_infilling",
+      "name": "Text Infilling and Middle Generation",
+      "role": "bidirectional_conditioning",
+      "prompt_protocol": "prefix_middle_suffix_output_middle_only",
+      "tasks": [
+        {"id": "wikitext103", "dataset": "WikiText-103", "primary_metric": "token_f1"},
+        {"id": "cnn_dailymail", "dataset": "CNN/DailyMail", "primary_metric": "rouge_l"},
+        {"id": "arxiv_abstracts", "dataset": "arXiv abstracts", "primary_metric": "bertscore_f1"}
+      ],
+      "metric_ids": [
+        "token_f1",
+        "rouge_l",
+        "bertscore_f1",
+        "boundary_consistency",
+        "contradiction_rate"
+      ],
+      "stratifiers": ["span_length_bin", "boundary_density"]
+    },
+    {
+      "id": "track3_editing",
+      "name": "Text Editing and Revision",
+      "role": "localized_revision",
+      "prompt_protocol": "instruction_only_full_text_edit",
+      "tasks": [
+        {"id": "conll2014_gec", "dataset": "CoNLL-2014 GEC", "primary_metric": "edit_success"},
+        {"id": "fruit", "dataset": "FRUIT", "primary_metric": "edit_success"},
+        {"id": "synthetic_repair", "dataset": "Synthetic contradiction repair", "primary_metric": "edit_success"}
+      ],
+      "metric_ids": [
+        "edit_success",
+        "preservation_score",
+        "over_edit_rate",
+        "contradiction_reduction_rate"
+      ]
+    },
+    {
+      "id": "track4_reasoning",
+      "name": "Reasoning Ability",
+      "role": "reasoning_structure",
+      "prompt_protocol": "deterministic_direct_answer",
+      "tasks": [
+        {"id": "gsm8k_chain", "dataset": "GSM8K", "reasoning_type": "chain", "primary_metric": "normalized_exact_match"},
+        {"id": "math500_chain", "dataset": "MATH-500", "reasoning_type": "chain", "primary_metric": "normalized_exact_match"},
+        {"id": "winogrande_planning", "dataset": "WinoGrande", "reasoning_type": "planning", "primary_metric": "option_accuracy"},
+        {"id": "pathstar_planning", "dataset": "Path-Star", "reasoning_type": "planning", "primary_metric": "path_validity"}
+      ],
+      "metric_ids": [
+        "normalized_exact_match",
+        "option_accuracy",
+        "path_validity",
+        "chain_average",
+        "planning_average",
+        "reasoning_regime_gap"
+      ]
+    }
+  ],
+  "paper_result_columns": [
+    {"table": "Table 2", "column": "MMLU-Pro", "track": "track1_general", "task": "mmlu_pro", "metric": "accuracy"},
+    {"table": "Table 2", "column": "HellaSwag", "track": "track1_general", "task": "hellaswag", "metric": "accuracy"},
+    {"table": "Table 2", "column": "GSM8K", "track": "track1_general", "task": "gsm8k_general", "metric": "normalized_exact_match"},
+    {"table": "Table 2", "column": "HumanEval", "track": "track1_general", "task": "humaneval", "metric": "pass_at_1"},
+    {"table": "Table 2", "column": "IFEval", "track": "track1_general", "task": "ifeval", "metric": "instruction_following_rate"},
+
+    {"table": "Table 3", "column": "Wiki F1", "track": "track2_infilling", "task": "wikitext103", "metric": "token_f1"},
+    {"table": "Table 3", "column": "CNN R-L", "track": "track2_infilling", "task": "cnn_dailymail", "metric": "rouge_l"},
+    {"table": "Table 3", "column": "arXiv BS", "track": "track2_infilling", "task": "arxiv_abstracts", "metric": "bertscore_f1"},
+    {"table": "Table 3", "column": "Boundary Consistency", "track": "track2_infilling", "task": "__track__", "metric": "boundary_consistency"},
+    {"table": "Table 3", "column": "Contradiction Rate", "track": "track2_infilling", "task": "__track__", "metric": "contradiction_rate"},
+
+    {"table": "Table 4", "column": "Edit Success", "track": "track3_editing", "task": "__dataset_row__", "metric": "edit_success"},
+    {"table": "Table 4", "column": "Preservation", "track": "track3_editing", "task": "__dataset_row__", "metric": "preservation_score"},
+    {"table": "Table 4", "column": "Over-Edit", "track": "track3_editing", "task": "__dataset_row__", "metric": "over_edit_rate"},
+    {"table": "Table 4", "column": "Contradiction Reduction", "track": "track3_editing", "task": "__dataset_row__", "metric": "contradiction_reduction_rate"},
+
+    {"table": "Table 5", "column": "GSM8K", "track": "track4_reasoning", "task": "gsm8k_chain", "metric": "normalized_exact_match"},
+    {"table": "Table 5", "column": "MATH", "track": "track4_reasoning", "task": "math500_chain", "metric": "normalized_exact_match"},
+    {"table": "Table 5", "column": "Chain Avg.", "track": "track4_reasoning", "task": "__track__", "metric": "chain_average"},
+    {"table": "Table 5", "column": "WinoG.", "track": "track4_reasoning", "task": "winogrande_planning", "metric": "option_accuracy"},
+    {"table": "Table 5", "column": "Path-Star", "track": "track4_reasoning", "task": "pathstar_planning", "metric": "path_validity"},
+    {"table": "Table 5", "column": "Plan Avg.", "track": "track4_reasoning", "task": "__track__", "metric": "planning_average"}
+  ],
+  "failure_classes": [
+    "empty_output",
+    "parse_error",
+    "context_copy",
+    "full_document_output",
+    "truncated_output",
+    "runtime_error",
+    "unsafe_code_result"
+  ]
+}
+

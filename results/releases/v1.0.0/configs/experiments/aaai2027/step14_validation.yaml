@@ -1,0 +1,8 @@
+schema_version: "1.0"
+experiment_id: aaai2027-step14-validation
+run_root: reference-runs
+output_dir: reference-report
+specification: specification/benchmark-v1.json
+precision: 4
+score_scale: 100.0
+require_complete_tables: false

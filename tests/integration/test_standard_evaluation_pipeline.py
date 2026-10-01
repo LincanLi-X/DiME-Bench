@@ -21,11 +21,7 @@ def test_sample_to_dataset_aggregation_retains_failure_zero(tmp_path) -> None:
         failed_sample,
         [TokenF1Evaluator()],
     )
-    store = MetricStore(
-        tmp_path / "sample_metrics.jsonl",
-        "standard-metric-fixture",
-        "a" * 64,
-    )
+    store = MetricStore(tmp_path / "sample_metrics.jsonl", "step10", "a" * 64)
     store.append(success)
     store.append(failure)
     summary = store.summarize()

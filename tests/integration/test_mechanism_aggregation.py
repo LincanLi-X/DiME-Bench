@@ -13,11 +13,7 @@ def test_mechanism_aggregate_reports_null_and_zero_coverage(tmp_path) -> None:
     sample = localized_edit_sample()
     failed = result_for(sample, None, status="failure")
     record = evaluate_sample(failed, sample, [PreservationScoreEvaluator()])
-    store = MetricStore(
-        tmp_path / "sample_metrics.jsonl",
-        "standard-metric-fixture",
-        "a" * 64,
-    )
+    store = MetricStore(tmp_path / "sample_metrics.jsonl", "step10", "a" * 64)
     store.append(record)
     aggregate = store.summarize().metrics["preservation_score"]
 
@@ -47,11 +43,7 @@ def test_mechanism_aggregate_uses_only_eligible_values_but_keeps_denominator(
         failed_sample,
         [PreservationScoreEvaluator()],
     )
-    store = MetricStore(
-        tmp_path / "sample_metrics.jsonl",
-        "standard-metric-fixture",
-        "a" * 64,
-    )
+    store = MetricStore(tmp_path / "sample_metrics.jsonl", "step10", "a" * 64)
     store.append(success)
     store.append(failure)
     aggregate = store.summarize().metrics["preservation_score"]

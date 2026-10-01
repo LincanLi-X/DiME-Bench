@@ -1,4 +1,4 @@
-"""Builders shared by CPU-only mechanism-metric tests."""
+"""Builders shared by CPU-only Step 11 mechanism tests."""
 
 from __future__ import annotations
 

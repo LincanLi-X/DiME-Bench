@@ -35,9 +35,7 @@ class DistributedRunner(BaseRunner):
 
     def _run_partition(self, partition: JobPartition) -> tuple[JobExecution, ...]:
         gpu_id = (
-            self.runtime.gpu_ids[partition.worker_id]
-            if self.runtime.gpu_ids
-            else None
+            self.runtime.gpu_ids[partition.worker_id] if self.runtime.gpu_ids else None
         )
         return tuple(
             self._execute_job(

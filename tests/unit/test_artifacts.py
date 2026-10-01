@@ -355,7 +355,7 @@ def test_traceability_validator_recomputes_summary_values(tmp_path: Path) -> Non
 
 def test_real_environment_capture_has_core_reproducibility_fields() -> None:
     environment = collect_environment(PROJECT_ROOT)
-    assert environment.dimebench_version == "0.1.0.dev0"
+    assert environment.dimebench_version == "1.0.0"
     assert environment.python_version
     assert environment.hardware.machine
     assert "dime-bench" in environment.dependencies

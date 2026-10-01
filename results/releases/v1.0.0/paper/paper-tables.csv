@@ -1,0 +1,41 @@
+table,row_id,model_id,model_family,dataset_id,column,value,scaled_value,status,source_run_ids
+Table 2,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,MMLU-Pro,,,missing,
+Table 2,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,HellaSwag,,,missing,
+Table 2,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,GSM8K,0.4800,48.0000,present,step12-track1_general-gsm8k_general-dllm
+Table 2,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,HumanEval,,,missing,
+Table 2,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,IFEval,,,missing,
+Table 2,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,MMLU-Pro,,,missing,
+Table 2,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,HellaSwag,,,missing,
+Table 2,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,GSM8K,0.1600,16.0000,present,step12-track1_general-gsm8k_general-ar
+Table 2,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,HumanEval,,,missing,
+Table 2,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,IFEval,,,missing,
+Table 3,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,Wiki F1,0.0000,0.0000,present,step12-track2_infilling-wikitext103-dllm
+Table 3,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,CNN R-L,,,missing,
+Table 3,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,arXiv BS,,,missing,
+Table 3,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,Boundary Consistency,,,missing,
+Table 3,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,Contradiction Rate,,,missing,
+Table 3,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,Wiki F1,0.1638,16.3808,present,step12-track2_infilling-wikitext103-ar
+Table 3,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,CNN R-L,,,missing,
+Table 3,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,arXiv BS,,,missing,
+Table 3,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,Boundary Consistency,0.0417,4.1667,present,step12-track2_infilling-wikitext103-ar
+Table 3,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,Contradiction Rate,0.4583,45.8333,present,step12-track2_infilling-wikitext103-ar
+Table 4,diffusion:llada-8b-instruct:synthetic_repair,llada-8b-instruct,diffusion,synthetic_repair,Edit Success,0.8400,84.0000,present,step12-track3_editing-synthetic_repair-dllm
+Table 4,diffusion:llada-8b-instruct:synthetic_repair,llada-8b-instruct,diffusion,synthetic_repair,Preservation,0.9292,92.9220,present,step12-track3_editing-synthetic_repair-dllm
+Table 4,diffusion:llada-8b-instruct:synthetic_repair,llada-8b-instruct,diffusion,synthetic_repair,Over-Edit,0.0959,9.5900,present,step12-track3_editing-synthetic_repair-dllm
+Table 4,diffusion:llada-8b-instruct:synthetic_repair,llada-8b-instruct,diffusion,synthetic_repair,Contradiction Reduction,0.2400,24.0000,present,step12-track3_editing-synthetic_repair-dllm
+Table 4,autoregressive:llama3-8b-instruct:synthetic_repair,llama3-8b-instruct,autoregressive,synthetic_repair,Edit Success,0.0000,0.0000,present,step12-track3_editing-synthetic_repair-ar
+Table 4,autoregressive:llama3-8b-instruct:synthetic_repair,llama3-8b-instruct,autoregressive,synthetic_repair,Preservation,0.9324,93.2381,present,step12-track3_editing-synthetic_repair-ar
+Table 4,autoregressive:llama3-8b-instruct:synthetic_repair,llama3-8b-instruct,autoregressive,synthetic_repair,Over-Edit,0.9422,94.2166,present,step12-track3_editing-synthetic_repair-ar
+Table 4,autoregressive:llama3-8b-instruct:synthetic_repair,llama3-8b-instruct,autoregressive,synthetic_repair,Contradiction Reduction,0.7600,76.0000,present,step12-track3_editing-synthetic_repair-ar
+Table 5,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,GSM8K,,,missing,
+Table 5,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,MATH,,,missing,
+Table 5,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,Chain Avg.,,,missing,
+Table 5,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,WinoG.,0.0000,0.0000,present,step12-track4_reasoning-winogrande_planning-dllm
+Table 5,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,Path-Star,,,missing,
+Table 5,diffusion:llada-8b-instruct,llada-8b-instruct,diffusion,,Plan Avg.,0.0000,0.0000,present,step12-track4_reasoning-winogrande_planning-dllm
+Table 5,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,GSM8K,,,missing,
+Table 5,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,MATH,,,missing,
+Table 5,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,Chain Avg.,,,missing,
+Table 5,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,WinoG.,0.3200,32.0000,present,step12-track4_reasoning-winogrande_planning-ar
+Table 5,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,Path-Star,,,missing,
+Table 5,autoregressive:llama3-8b-instruct,llama3-8b-instruct,autoregressive,,Plan Avg.,0.3200,32.0000,present,step12-track4_reasoning-winogrande_planning-ar

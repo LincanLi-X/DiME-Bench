@@ -155,9 +155,10 @@ class BaseRunner(ABC):
             if gpu_id is not None:
                 environment["CUDA_VISIBLE_DEVICES"] = self._device_token(gpu_id)
             started_at = utc_now()
-            with stdout_path.open("w", encoding="utf-8") as stdout, stderr_path.open(
-                "w", encoding="utf-8"
-            ) as stderr:
+            with (
+                stdout_path.open("w", encoding="utf-8") as stdout,
+                stderr_path.open("w", encoding="utf-8") as stderr,
+            ):
                 try:
                     completed = subprocess.run(
                         list(job.command),

@@ -9,7 +9,7 @@ from dimebench.schemas.task import TaskSpec
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
-def test_every_standard_task_metric_resolves_to_an_evaluator() -> None:
+def test_every_step10_task_metric_resolves_to_a_standard_evaluator() -> None:
     standard = set(available_standard_evaluators())
     expected = {
         "accuracy",

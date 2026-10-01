@@ -21,7 +21,7 @@ from dimebench.runners import (
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-FIXTURE = PROJECT_ROOT / "tests/fixtures/runner_worker.py"
+FIXTURE = PROJECT_ROOT / "scripts/step13_worker_fixture.py"
 
 
 def _jobs(root: Path, *, fail_first: bool = False) -> tuple[BenchmarkJob, ...]:
@@ -67,9 +67,7 @@ def _scores(root: Path) -> dict[str, dict[str, object]]:
 
 def test_runtime_configs_are_strict_and_loadable() -> None:
     local = load_runtime_config(PROJECT_ROOT / "configs/runtime/local_1gpu.yaml")
-    distributed = load_runtime_config(
-        PROJECT_ROOT / "configs/runtime/b200_4gpu.yaml"
-    )
+    distributed = load_runtime_config(PROJECT_ROOT / "configs/runtime/b200_4gpu.yaml")
     assert (local.backend, local.worker_count, local.gpu_ids) == ("local", 1, (0,))
     assert distributed.worker_count == 4
     assert distributed.gpu_ids == (0, 1, 2, 3)

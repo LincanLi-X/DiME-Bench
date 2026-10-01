@@ -1,0 +1,43 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging artifacts
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+.step*-venv/
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# Local benchmark artifacts
+data/raw/
+data/processed/
+data/cache/
+outputs/
+gpu-results/
+step6-results/
+step7-results/
+step8-results/
+step9-results/
+step10-results/
+step11-results/
+step12-results/
+step13-results/
+step14-results/
+step15-results/
+step16-results/
+step17-results/
+reports/
+step14_cpu.sbatch
+
+# macOS
+.DS_Store

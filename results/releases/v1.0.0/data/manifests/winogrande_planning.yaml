@@ -1,0 +1,27 @@
+schema_version: "1.0"
+id: winogrande_planning
+display_name: WinoGrande planning reasoning
+version: dime-v1
+track: track4_reasoning
+record_kind: reasoning
+license: Apache-2.0
+homepage: https://huggingface.co/datasets/allenai/winogrande
+citation: sakaguchi2020winogrande
+source:
+  type: huggingface
+  name_or_path: allenai/winogrande
+  subset: winogrande_xl
+  revision: main
+splits: [validation]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: reasoning
+  field_map:
+    problem: sentence
+    answer: answer
+    answer_index: answer
+  parameters:
+    reasoning_type: planning
+    choice_fields: [option1, option2]
+    answer_index_offset: 1
+notes: The adapter converts option1/option2 and one-based labels deterministically.

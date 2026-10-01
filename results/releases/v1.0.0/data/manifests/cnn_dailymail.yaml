@@ -1,0 +1,23 @@
+schema_version: "1.0"
+id: cnn_dailymail
+display_name: CNN/DailyMail paragraph infilling
+version: dime-v1
+track: track2_infilling
+record_kind: infilling
+license: See upstream dataset card
+homepage: https://huggingface.co/datasets/abisee/cnn_dailymail
+citation: hermann2015teaching
+source:
+  type: huggingface
+  name_or_path: abisee/cnn_dailymail
+  subset: "3.0.0"
+  revision: main
+splits: [test]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: infilling
+  field_map:
+    text: article
+  parameters:
+    domain: news
+notes: Full preparation applies the frozen paragraph selection policy.

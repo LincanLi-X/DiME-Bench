@@ -1,4 +1,4 @@
-"""Shared builders for committed postprocessor golden cases."""
+"""Shared builders for committed Step 9 golden cases."""
 
 from __future__ import annotations
 
@@ -114,7 +114,7 @@ def prediction_for(
     status = case.get("prediction_status", "success")
     if status == "failure":
         return PredictionRecord(
-            run_id="postprocessor-golden",
+            run_id="step9_golden",
             config_hash="0" * 64,
             sample_id=sample.sample_id,
             model_id="fixture-model",
@@ -126,7 +126,7 @@ def prediction_for(
             decoding_metadata={"inference": {"finish_reason": case["finish_reason"]}},
         )
     return PredictionRecord(
-        run_id="postprocessor-golden",
+        run_id="step9_golden",
         config_hash="0" * 64,
         sample_id=sample.sample_id,
         model_id="fixture-model",

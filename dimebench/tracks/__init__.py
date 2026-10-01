@@ -1,17 +1,17 @@
-"""Track-level end-to-end evaluation helpers."""
+"""Track-level end-to-end validation helpers."""
 
-from dimebench.tracks.benchmark import (
-    BenchmarkMatrix,
+from dimebench.tracks.step12 import (
+    Step12Matrix,
     TrackValidationCase,
-    build_benchmark_run_specs,
-    evaluate_benchmark_run,
-    load_benchmark_matrix,
+    build_step12_run_specs,
+    evaluate_step12_run,
+    load_step12_matrix,
 )
 
 __all__ = [
-    "BenchmarkMatrix",
+    "Step12Matrix",
     "TrackValidationCase",
-    "build_benchmark_run_specs",
-    "evaluate_benchmark_run",
-    "load_benchmark_matrix",
+    "build_step12_run_specs",
+    "evaluate_step12_run",
+    "load_step12_matrix",
 ]

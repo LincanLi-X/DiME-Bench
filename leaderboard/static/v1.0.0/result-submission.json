@@ -1,0 +1,559 @@
+{
+  "benchmark_id": "dime_bench_v1",
+  "benchmark_version": "1.0.0",
+  "schema_version": "1.0",
+  "submission_id": "dime-bench-v1-reference",
+  "summary": {
+    "benchmark_id": "dime_bench_v1",
+    "datasets": [
+      {
+        "artifact_hashes": {
+          "environment.json": "9f756626276927d8dcff6d7e5ddc44b9aeba1dc68391d696edac92ecfd69d577",
+          "predictions.jsonl": "68b50b095ba8d0acdd5e1910a8393a7239de6e93ae6bc8fd0c778bbf6535490c",
+          "sample_metrics.jsonl": "237993f1ceec6663391d85b5cb981815cc8b84f4a28047af3ffded6be5926ebd",
+          "summary.json": "ced30cfd226813ff395b74eaf30b90245b93e471ab9ce096f65d4e97dbb95e45"
+        },
+        "config_hash": "bcfcd672706eacda97c93699cf526f2a40bd44929cde4e4be8c3902c21f4457e",
+        "dataset_id": "gsm8k_general",
+        "metrics": {
+          "normalized_exact_match": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "normalized_exact_match",
+            "sample_count": 25,
+            "sample_ids_hash": "340716389a309b4c8091839f024082bcdbb3b221807efae79ea42b50704ded1b",
+            "skipped_count": 0,
+            "source_path": "step12-track1_general-gsm8k_general-ar/summary.json",
+            "source_run_id": "step12-track1_general-gsm8k_general-ar",
+            "source_sha256": "ced30cfd226813ff395b74eaf30b90245b93e471ab9ce096f65d4e97dbb95e45",
+            "total_sample_count": 25,
+            "value": 0.16
+          }
+        },
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "primary_metric": "normalized_exact_match",
+        "primary_value": 0.16,
+        "reasoning_type": null,
+        "run_id": "step12-track1_general-gsm8k_general-ar",
+        "sample_count": 25,
+        "schema_version": "1.0",
+        "source_path": "step12-track1_general-gsm8k_general-ar",
+        "task_id": "gsm8k_general",
+        "track": "track1_general"
+      },
+      {
+        "artifact_hashes": {
+          "environment.json": "c74d0e0e13b558d5e2d3b1f65d195cfe307b8db95a08ed333a96502762f301d3",
+          "predictions.jsonl": "1513ced7ad20dae201eb0b79622f4a626a01eff60d7eb4c298dcc32503ec0569",
+          "sample_metrics.jsonl": "74fb21dd9be806417c943866050609ba3eac9950e708af08eac5ccd9e61b03cb",
+          "summary.json": "fbebad31bab8b873292175bcbd408f00abffae5e2aa8c1ccbd306d1e153c1a42"
+        },
+        "config_hash": "f7b28c317b0cf934755ca91085879687c2bd30f509f163ce4c2712f58567e55a",
+        "dataset_id": "gsm8k_general",
+        "metrics": {
+          "normalized_exact_match": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "normalized_exact_match",
+            "sample_count": 25,
+            "sample_ids_hash": "340716389a309b4c8091839f024082bcdbb3b221807efae79ea42b50704ded1b",
+            "skipped_count": 0,
+            "source_path": "step12-track1_general-gsm8k_general-dllm/summary.json",
+            "source_run_id": "step12-track1_general-gsm8k_general-dllm",
+            "source_sha256": "fbebad31bab8b873292175bcbd408f00abffae5e2aa8c1ccbd306d1e153c1a42",
+            "total_sample_count": 25,
+            "value": 0.48
+          }
+        },
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "primary_metric": "normalized_exact_match",
+        "primary_value": 0.48,
+        "reasoning_type": null,
+        "run_id": "step12-track1_general-gsm8k_general-dllm",
+        "sample_count": 25,
+        "schema_version": "1.0",
+        "source_path": "step12-track1_general-gsm8k_general-dllm",
+        "task_id": "gsm8k_general",
+        "track": "track1_general"
+      },
+      {
+        "artifact_hashes": {
+          "environment.json": "0e257946980cedd39cb7ca85706aa94397db38654f2736aa80982e2c2ee84b1c",
+          "predictions.jsonl": "dfa6dec1de20be1ec53f35b7a963ccd4732995dd36bd82ef5d495246ee887ff4",
+          "sample_metrics.jsonl": "007adafa02530fb657be3b8f3b2ffc8ebeebae2bb4f8280bf529db057b5ec521",
+          "summary.json": "273c4574ecce5833e1147e5fbfd1130e7f93f0d61c51af8072aed70a0fd55da9"
+        },
+        "config_hash": "90ee2a1b63a52ab9efffdd851f2fe5da87918c6aad7887f71b094fd95fbad828",
+        "dataset_id": "wikitext103",
+        "metrics": {
+          "boundary_consistency": {
+            "coverage": 0.96,
+            "failure_count": 1,
+            "metric_id": "boundary_consistency",
+            "sample_count": 24,
+            "sample_ids_hash": "ad34b840e65ee8a8ba00577d8b03a4754a6a61c75444211b0e68a976699a646f",
+            "skipped_count": 0,
+            "source_path": "step12-track2_infilling-wikitext103-ar/summary.json",
+            "source_run_id": "step12-track2_infilling-wikitext103-ar",
+            "source_sha256": "273c4574ecce5833e1147e5fbfd1130e7f93f0d61c51af8072aed70a0fd55da9",
+            "total_sample_count": 25,
+            "value": 0.041666666666666664
+          },
+          "contradiction_rate": {
+            "coverage": 0.96,
+            "failure_count": 1,
+            "metric_id": "contradiction_rate",
+            "sample_count": 24,
+            "sample_ids_hash": "ad34b840e65ee8a8ba00577d8b03a4754a6a61c75444211b0e68a976699a646f",
+            "skipped_count": 0,
+            "source_path": "step12-track2_infilling-wikitext103-ar/summary.json",
+            "source_run_id": "step12-track2_infilling-wikitext103-ar",
+            "source_sha256": "273c4574ecce5833e1147e5fbfd1130e7f93f0d61c51af8072aed70a0fd55da9",
+            "total_sample_count": 25,
+            "value": 0.4583333333333333
+          },
+          "token_f1": {
+            "coverage": 1.0,
+            "failure_count": 1,
+            "metric_id": "token_f1",
+            "sample_count": 25,
+            "sample_ids_hash": "ac870c794892e491eb6c5ca5f9660344bbb21ba5ebb4a1e565e8db46a2089cca",
+            "skipped_count": 0,
+            "source_path": "step12-track2_infilling-wikitext103-ar/summary.json",
+            "source_run_id": "step12-track2_infilling-wikitext103-ar",
+            "source_sha256": "273c4574ecce5833e1147e5fbfd1130e7f93f0d61c51af8072aed70a0fd55da9",
+            "total_sample_count": 25,
+            "value": 0.16380783933880505
+          }
+        },
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "primary_metric": "token_f1",
+        "primary_value": 0.16380783933880505,
+        "reasoning_type": null,
+        "run_id": "step12-track2_infilling-wikitext103-ar",
+        "sample_count": 25,
+        "schema_version": "1.0",
+        "source_path": "step12-track2_infilling-wikitext103-ar",
+        "task_id": "wikitext103",
+        "track": "track2_infilling"
+      },
+      {
+        "artifact_hashes": {
+          "environment.json": "4955b6c3edf904f92256df0f4badaf387e5322419e837c788cc5ede724d7bc12",
+          "predictions.jsonl": "8be0f45be41ebb2b625b3a3714173573fb9a18ed9bec9ed7b6b60c92c1fde1d0",
+          "sample_metrics.jsonl": "86883a40ed8f537875535578fed8c1e81c2ba43040133a2ee9e1343444cb0734",
+          "summary.json": "ac7b7706db8f0eb254c2841522c24ee9d44a364260143dfe10e16732164835b6"
+        },
+        "config_hash": "9130c261f29d802e8bb9fc135b833e5aec5e77da99f5d8858d810aa3a2f73d3f",
+        "dataset_id": "wikitext103",
+        "metrics": {
+          "boundary_consistency": {
+            "coverage": 0.0,
+            "failure_count": 25,
+            "metric_id": "boundary_consistency",
+            "sample_count": 0,
+            "sample_ids_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "skipped_count": 0,
+            "source_path": "step12-track2_infilling-wikitext103-dllm/summary.json",
+            "source_run_id": "step12-track2_infilling-wikitext103-dllm",
+            "source_sha256": "ac7b7706db8f0eb254c2841522c24ee9d44a364260143dfe10e16732164835b6",
+            "total_sample_count": 25,
+            "value": null
+          },
+          "contradiction_rate": {
+            "coverage": 0.0,
+            "failure_count": 25,
+            "metric_id": "contradiction_rate",
+            "sample_count": 0,
+            "sample_ids_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "skipped_count": 0,
+            "source_path": "step12-track2_infilling-wikitext103-dllm/summary.json",
+            "source_run_id": "step12-track2_infilling-wikitext103-dllm",
+            "source_sha256": "ac7b7706db8f0eb254c2841522c24ee9d44a364260143dfe10e16732164835b6",
+            "total_sample_count": 25,
+            "value": null
+          },
+          "token_f1": {
+            "coverage": 1.0,
+            "failure_count": 25,
+            "metric_id": "token_f1",
+            "sample_count": 25,
+            "sample_ids_hash": "ac870c794892e491eb6c5ca5f9660344bbb21ba5ebb4a1e565e8db46a2089cca",
+            "skipped_count": 0,
+            "source_path": "step12-track2_infilling-wikitext103-dllm/summary.json",
+            "source_run_id": "step12-track2_infilling-wikitext103-dllm",
+            "source_sha256": "ac7b7706db8f0eb254c2841522c24ee9d44a364260143dfe10e16732164835b6",
+            "total_sample_count": 25,
+            "value": 0.0
+          }
+        },
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "primary_metric": "token_f1",
+        "primary_value": 0.0,
+        "reasoning_type": null,
+        "run_id": "step12-track2_infilling-wikitext103-dllm",
+        "sample_count": 25,
+        "schema_version": "1.0",
+        "source_path": "step12-track2_infilling-wikitext103-dllm",
+        "task_id": "wikitext103",
+        "track": "track2_infilling"
+      },
+      {
+        "artifact_hashes": {
+          "environment.json": "a4bcff5a713d9f4e762cf858ea669c42eb629ecca8c833e2d4e375cb020a9b58",
+          "predictions.jsonl": "6afc72971e270e11c0b5fb224acdd6216100b32359ebcd75790cef788ce59105",
+          "sample_metrics.jsonl": "a4c65ccdbc7b3544e97e62af5da8e4c72b055f0fccaa58a29d5ba7a50eac5897",
+          "summary.json": "c9d04cc7e70e1d9de6af02b1b4ac009730b9c9f55f4470350075c6b56c215ba6"
+        },
+        "config_hash": "0265c3909bed0d1d072deb13ef7924122c109696763c4f1e80c486bcf956a35e",
+        "dataset_id": "synthetic_repair",
+        "metrics": {
+          "contradiction_reduction_rate": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "contradiction_reduction_rate",
+            "sample_count": 25,
+            "sample_ids_hash": "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206",
+            "skipped_count": 0,
+            "source_path": "step12-track3_editing-synthetic_repair-ar/summary.json",
+            "source_run_id": "step12-track3_editing-synthetic_repair-ar",
+            "source_sha256": "c9d04cc7e70e1d9de6af02b1b4ac009730b9c9f55f4470350075c6b56c215ba6",
+            "total_sample_count": 25,
+            "value": 0.76
+          },
+          "edit_success": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "edit_success",
+            "sample_count": 25,
+            "sample_ids_hash": "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206",
+            "skipped_count": 0,
+            "source_path": "step12-track3_editing-synthetic_repair-ar/summary.json",
+            "source_run_id": "step12-track3_editing-synthetic_repair-ar",
+            "source_sha256": "c9d04cc7e70e1d9de6af02b1b4ac009730b9c9f55f4470350075c6b56c215ba6",
+            "total_sample_count": 25,
+            "value": 0.0
+          },
+          "over_edit_rate": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "over_edit_rate",
+            "sample_count": 25,
+            "sample_ids_hash": "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206",
+            "skipped_count": 0,
+            "source_path": "step12-track3_editing-synthetic_repair-ar/summary.json",
+            "source_run_id": "step12-track3_editing-synthetic_repair-ar",
+            "source_sha256": "c9d04cc7e70e1d9de6af02b1b4ac009730b9c9f55f4470350075c6b56c215ba6",
+            "total_sample_count": 25,
+            "value": 0.9421664293785238
+          },
+          "preservation_score": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "preservation_score",
+            "sample_count": 25,
+            "sample_ids_hash": "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206",
+            "skipped_count": 0,
+            "source_path": "step12-track3_editing-synthetic_repair-ar/summary.json",
+            "source_run_id": "step12-track3_editing-synthetic_repair-ar",
+            "source_sha256": "c9d04cc7e70e1d9de6af02b1b4ac009730b9c9f55f4470350075c6b56c215ba6",
+            "total_sample_count": 25,
+            "value": 0.9323805312334724
+          }
+        },
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "primary_metric": "edit_success",
+        "primary_value": 0.0,
+        "reasoning_type": null,
+        "run_id": "step12-track3_editing-synthetic_repair-ar",
+        "sample_count": 25,
+        "schema_version": "1.0",
+        "source_path": "step12-track3_editing-synthetic_repair-ar",
+        "task_id": "synthetic_repair",
+        "track": "track3_editing"
+      },
+      {
+        "artifact_hashes": {
+          "environment.json": "a792adc7d893335752130559495fbc0e8f285784f1cd9169288f259d9b75c74b",
+          "predictions.jsonl": "663e06baf54359833b07794b7dfe6105b56ad1142b2b250a9f748fe382d9a5fa",
+          "sample_metrics.jsonl": "1e4bd57931c6e4667319828b7955c3b0c8e243c917113722542979b499c50ec7",
+          "summary.json": "95eb94e459b323e476b196dba4e1ae71f02cdea72517d72cfa44fcffd1ed6140"
+        },
+        "config_hash": "d0c89e3851fe95d11c5a0e507045a778e0c64fcaf44ca676369cbec442898bc1",
+        "dataset_id": "synthetic_repair",
+        "metrics": {
+          "contradiction_reduction_rate": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "contradiction_reduction_rate",
+            "sample_count": 25,
+            "sample_ids_hash": "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206",
+            "skipped_count": 0,
+            "source_path": "step12-track3_editing-synthetic_repair-dllm/summary.json",
+            "source_run_id": "step12-track3_editing-synthetic_repair-dllm",
+            "source_sha256": "95eb94e459b323e476b196dba4e1ae71f02cdea72517d72cfa44fcffd1ed6140",
+            "total_sample_count": 25,
+            "value": 0.24
+          },
+          "edit_success": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "edit_success",
+            "sample_count": 25,
+            "sample_ids_hash": "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206",
+            "skipped_count": 0,
+            "source_path": "step12-track3_editing-synthetic_repair-dllm/summary.json",
+            "source_run_id": "step12-track3_editing-synthetic_repair-dllm",
+            "source_sha256": "95eb94e459b323e476b196dba4e1ae71f02cdea72517d72cfa44fcffd1ed6140",
+            "total_sample_count": 25,
+            "value": 0.84
+          },
+          "over_edit_rate": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "over_edit_rate",
+            "sample_count": 25,
+            "sample_ids_hash": "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206",
+            "skipped_count": 0,
+            "source_path": "step12-track3_editing-synthetic_repair-dllm/summary.json",
+            "source_run_id": "step12-track3_editing-synthetic_repair-dllm",
+            "source_sha256": "95eb94e459b323e476b196dba4e1ae71f02cdea72517d72cfa44fcffd1ed6140",
+            "total_sample_count": 25,
+            "value": 0.0959
+          },
+          "preservation_score": {
+            "coverage": 1.0,
+            "failure_count": 0,
+            "metric_id": "preservation_score",
+            "sample_count": 25,
+            "sample_ids_hash": "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206",
+            "skipped_count": 0,
+            "source_path": "step12-track3_editing-synthetic_repair-dllm/summary.json",
+            "source_run_id": "step12-track3_editing-synthetic_repair-dllm",
+            "source_sha256": "95eb94e459b323e476b196dba4e1ae71f02cdea72517d72cfa44fcffd1ed6140",
+            "total_sample_count": 25,
+            "value": 0.9292203580732992
+          }
+        },
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "primary_metric": "edit_success",
+        "primary_value": 0.84,
+        "reasoning_type": null,
+        "run_id": "step12-track3_editing-synthetic_repair-dllm",
+        "sample_count": 25,
+        "schema_version": "1.0",
+        "source_path": "step12-track3_editing-synthetic_repair-dllm",
+        "task_id": "synthetic_repair",
+        "track": "track3_editing"
+      },
+      {
+        "artifact_hashes": {
+          "environment.json": "30f8312c2da46a779f528f0a31ccdc567b776f15e21cf224fe43142a2fc9d6c8",
+          "predictions.jsonl": "4970fef384cc65f2b563233100fd109b35843fc3e002874834500d2aa7507b7c",
+          "sample_metrics.jsonl": "adc36d2094b5c1d1157154ee3c466e28de5dfe58da17eeb7920fb73b4f1626d9",
+          "summary.json": "c5d51bfeb989c35c893e9ba0ec9f04bdca629340a0d34fb8de0a6cb3bc75c14f"
+        },
+        "config_hash": "0b21153fd005b8907029d6506cad63da3355123957e21592f90511d9a1bfc68c",
+        "dataset_id": "winogrande_planning",
+        "metrics": {
+          "option_accuracy": {
+            "coverage": 1.0,
+            "failure_count": 13,
+            "metric_id": "option_accuracy",
+            "sample_count": 25,
+            "sample_ids_hash": "a170407b20e4f4bd0d74b885d6bd989abd22e36933561347e23635162a9b7041",
+            "skipped_count": 0,
+            "source_path": "step12-track4_reasoning-winogrande_planning-ar/summary.json",
+            "source_run_id": "step12-track4_reasoning-winogrande_planning-ar",
+            "source_sha256": "c5d51bfeb989c35c893e9ba0ec9f04bdca629340a0d34fb8de0a6cb3bc75c14f",
+            "total_sample_count": 25,
+            "value": 0.32
+          }
+        },
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "primary_metric": "option_accuracy",
+        "primary_value": 0.32,
+        "reasoning_type": "planning",
+        "run_id": "step12-track4_reasoning-winogrande_planning-ar",
+        "sample_count": 25,
+        "schema_version": "1.0",
+        "source_path": "step12-track4_reasoning-winogrande_planning-ar",
+        "task_id": "winogrande_planning",
+        "track": "track4_reasoning"
+      },
+      {
+        "artifact_hashes": {
+          "environment.json": "1e307eeba9420c3e1ce4777cc8dc525a3a9c641333b06b2a1a044aa2aa841c9c",
+          "predictions.jsonl": "56c863a45ed7379a47fefe8abffe5bc162e6d7abb25665f68a3b849a3d959d57",
+          "sample_metrics.jsonl": "8357d4df37c8d95d5cc47c4563128b8a7f6ff2837b652d43bd28702fc63d94df",
+          "summary.json": "4c46f5cdb436df86c715e162b57317ca9ba7e20e91fc4253bdc4c38abfedb681"
+        },
+        "config_hash": "9e105bda332f18c23ac02b455e064acbc87ba84c8e5fb58218a90211def0c685",
+        "dataset_id": "winogrande_planning",
+        "metrics": {
+          "option_accuracy": {
+            "coverage": 1.0,
+            "failure_count": 24,
+            "metric_id": "option_accuracy",
+            "sample_count": 25,
+            "sample_ids_hash": "a170407b20e4f4bd0d74b885d6bd989abd22e36933561347e23635162a9b7041",
+            "skipped_count": 0,
+            "source_path": "step12-track4_reasoning-winogrande_planning-dllm/summary.json",
+            "source_run_id": "step12-track4_reasoning-winogrande_planning-dllm",
+            "source_sha256": "4c46f5cdb436df86c715e162b57317ca9ba7e20e91fc4253bdc4c38abfedb681",
+            "total_sample_count": 25,
+            "value": 0.0
+          }
+        },
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "primary_metric": "option_accuracy",
+        "primary_value": 0.0,
+        "reasoning_type": "planning",
+        "run_id": "step12-track4_reasoning-winogrande_planning-dllm",
+        "sample_count": 25,
+        "schema_version": "1.0",
+        "source_path": "step12-track4_reasoning-winogrande_planning-dllm",
+        "task_id": "winogrande_planning",
+        "track": "track4_reasoning"
+      }
+    ],
+    "models": [
+      {
+        "benchmark_score": 0.32999999999999996,
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "source_run_ids": [
+          "step12-track1_general-gsm8k_general-dllm",
+          "step12-track2_infilling-wikitext103-dllm",
+          "step12-track3_editing-synthetic_repair-dllm",
+          "step12-track4_reasoning-winogrande_planning-dllm"
+        ],
+        "track_scores": {
+          "track1_general": 0.48,
+          "track2_infilling": 0.0,
+          "track3_editing": 0.84,
+          "track4_reasoning": 0.0
+        }
+      },
+      {
+        "benchmark_score": 0.16095195983470126,
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "source_run_ids": [
+          "step12-track1_general-gsm8k_general-ar",
+          "step12-track2_infilling-wikitext103-ar",
+          "step12-track3_editing-synthetic_repair-ar",
+          "step12-track4_reasoning-winogrande_planning-ar"
+        ],
+        "track_scores": {
+          "track1_general": 0.16,
+          "track2_infilling": 0.16380783933880505,
+          "track3_editing": 0.0,
+          "track4_reasoning": 0.32
+        }
+      }
+    ],
+    "run_root": "reference-runs",
+    "schema_version": "1.0",
+    "source_fingerprint": "01df65696481107c698aabbe410504a734f3e44a0ae524848a79b4ae053efc54",
+    "tracks": [
+      {
+        "dataset_count": 1,
+        "macro_score": 0.48,
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "schema_version": "1.0",
+        "source_run_ids": [
+          "step12-track1_general-gsm8k_general-dllm"
+        ],
+        "track": "track1_general"
+      },
+      {
+        "dataset_count": 1,
+        "macro_score": 0.16,
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "schema_version": "1.0",
+        "source_run_ids": [
+          "step12-track1_general-gsm8k_general-ar"
+        ],
+        "track": "track1_general"
+      },
+      {
+        "dataset_count": 1,
+        "macro_score": 0.0,
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "schema_version": "1.0",
+        "source_run_ids": [
+          "step12-track2_infilling-wikitext103-dllm"
+        ],
+        "track": "track2_infilling"
+      },
+      {
+        "dataset_count": 1,
+        "macro_score": 0.16380783933880505,
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "schema_version": "1.0",
+        "source_run_ids": [
+          "step12-track2_infilling-wikitext103-ar"
+        ],
+        "track": "track2_infilling"
+      },
+      {
+        "dataset_count": 1,
+        "macro_score": 0.84,
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "schema_version": "1.0",
+        "source_run_ids": [
+          "step12-track3_editing-synthetic_repair-dllm"
+        ],
+        "track": "track3_editing"
+      },
+      {
+        "dataset_count": 1,
+        "macro_score": 0.0,
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "schema_version": "1.0",
+        "source_run_ids": [
+          "step12-track3_editing-synthetic_repair-ar"
+        ],
+        "track": "track3_editing"
+      },
+      {
+        "dataset_count": 1,
+        "macro_score": 0.0,
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "schema_version": "1.0",
+        "source_run_ids": [
+          "step12-track4_reasoning-winogrande_planning-dllm"
+        ],
+        "track": "track4_reasoning"
+      },
+      {
+        "dataset_count": 1,
+        "macro_score": 0.32,
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "schema_version": "1.0",
+        "source_run_ids": [
+          "step12-track4_reasoning-winogrande_planning-ar"
+        ],
+        "track": "track4_reasoning"
+      }
+    ]
+  },
+  "summary_sha256": "239483d3df754f36aabac41b663099341042dea0cd03989a2c545ab9f253c756"
+}

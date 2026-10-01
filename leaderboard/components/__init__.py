@@ -1,0 +1,1 @@
+"""Reusable static leaderboard components."""

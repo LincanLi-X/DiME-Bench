@@ -1,0 +1,3 @@
+model_id,model_family,benchmark_score,source_run_ids
+llada-8b-instruct,diffusion,0.32999999999999996,step12-track1_general-gsm8k_general-dllm;step12-track2_infilling-wikitext103-dllm;step12-track3_editing-synthetic_repair-dllm;step12-track4_reasoning-winogrande_planning-dllm
+llama3-8b-instruct,autoregressive,0.16095195983470126,step12-track1_general-gsm8k_general-ar;step12-track2_infilling-wikitext103-ar;step12-track3_editing-synthetic_repair-ar;step12-track4_reasoning-winogrande_planning-ar

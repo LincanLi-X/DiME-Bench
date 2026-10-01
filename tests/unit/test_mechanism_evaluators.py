@@ -124,7 +124,7 @@ def _metric_record(
 ) -> SampleMetricRecord:
     metrics = {} if value is None else {"token_f1": value}
     return SampleMetricRecord(
-        run_id="mechanism-evaluator-fixture",
+        run_id="step11",
         config_hash="a" * 64,
         sample_id=sample_id,
         model_id="fixture-model",

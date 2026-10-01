@@ -1,0 +1,11 @@
+id: conll2014_gec
+track: track3_editing
+dataset_id: conll2014_gec
+type: editing
+prompt_id: track3.editing
+prompt_version: "1.0.0"
+parser_id: full_text_edit
+parser_version: "1.0.0"
+metrics: [edit_success, preservation_score, over_edit_rate]
+primary_metric: edit_success
+max_output_tokens: 512

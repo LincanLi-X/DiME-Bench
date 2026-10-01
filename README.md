@@ -13,9 +13,11 @@ The repository is an installable Python package with frozen data contracts,
 versioned prompts and parsers, AR/dLLM adapters, mechanism diagnostics,
 resumable artifacts, and single- or multi-GPU execution backends.
 
-> **Status:** research preview. The v1 benchmark protocol is frozen, while the
-> reporting, unified CLI, CI, and public leaderboard layers remain under active
-> development.
+> **Status:** v1.0.0 research release. The frozen benchmark protocol,
+> traceable reporting, paper-reproduction pipeline, versioned result schema,
+> static leaderboard, package artifacts, and CPU test/CI gates are implemented.
+> Uploading the package or container to a public registry remains an explicit
+> maintainer release action.
 
 ## Highlights
 
@@ -42,12 +44,12 @@ resumable artifacts, and single- or multi-GPU execution backends.
 
 ## Benchmark tracks
 
-| Track                     | Evaluation role                                   | Representative datasets                       | Main metrics                                                 |
-| ------------------------- | ------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------ |
-| **1. General Capability** | Calibrate overall model strength                  | MMLU-Pro, HellaSwag, GSM8K, HumanEval, IFEval | Accuracy, normalized exact match, pass@1, instruction following |
-| **2. Text Infilling**     | Test bidirectional prefix/suffix conditioning     | WikiText-103, CNN/DailyMail, arXiv abstracts  | Token F1, ROUGE-L, BERTScore, boundary consistency, contradiction rate |
-| **3. Text Editing**       | Test targeted correction and edit locality        | CoNLL-2014, FRUIT, Synthetic Repair           | Edit success, preservation, over-edit rate, contradiction reduction |
-| **4. Reasoning**          | Contrast chain-style and planning-style structure | GSM8K, MATH-500, WinoGrande, Path-Star        | Exact match, option accuracy, path validity, chain/planning averages |
+| Track | Evaluation role | Representative datasets | Main metrics |
+|---|---|---|---|
+| **1. General Capability** | Calibrate overall model strength | MMLU-Pro, HellaSwag, GSM8K, HumanEval, IFEval | Accuracy, normalized exact match, pass@1, instruction following |
+| **2. Text Infilling** | Test bidirectional prefix/suffix conditioning | WikiText-103, CNN/DailyMail, arXiv abstracts | Token F1, ROUGE-L, BERTScore, boundary consistency, contradiction rate |
+| **3. Text Editing** | Test targeted correction and edit locality | CoNLL-2014, FRUIT, Synthetic Repair | Edit success, preservation, over-edit rate, contradiction reduction |
+| **4. Reasoning** | Contrast chain-style and planning-style structure | GSM8K, MATH-500, WinoGrande, Path-Star | Exact match, option accuracy, path validity, chain/planning averages |
 
 See the [human-readable benchmark specification](docs/specification/benchmark-v1.md)
 and the [machine-readable v1 protocol](specification/benchmark-v1.json) for the
@@ -60,13 +62,21 @@ DiME-Bench supports Python 3.10-3.12.
 ### Development installation
 
 ```bash
-git clone https://github.com/DiME-Bench/DiME-Bench.git %The original Github User_Name in this link is shown as "DiME-Bench" for double-blind review
+git clone https://github.com/DiME-Bench/DiME-Bench.git
 cd DiME-Bench
 
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
+```
+
+To validate the built release artifact rather than an editable checkout:
+
+```bash
+python -m build
+python -m pip install dist/dime_bench-1.0.0-py3-none-any.whl
+dimebench smoke --output-dir outputs
 ```
 
 ### Optional dependencies
@@ -99,6 +109,13 @@ dimebench --help
 
 ## Quick start
 
+Inspect the registered assets:
+
+```bash
+dimebench list models
+dimebench list tasks
+```
+
 ### 1. Prepare deterministic sample data
 
 The bundled sample mode is small, offline, and intended for schema and pipeline
@@ -113,11 +130,19 @@ Each processed split receives content-addressed sample IDs, an ordered dataset
 hash, and a split lock. Repeating preparation with the same manifest, seed, and
 selection parameters produces the same sample set.
 
+Inspect the exact AR and diffusion prompts for a prepared sample:
+
+```bash
+dimebench inspect prompt \
+  --task mmlu_pro \
+  --sample-id mmlu_pro.test.07a93fcb35bb959d
+```
+
 Use `--full` for upstream data:
 
 ```bash
 dimebench prepare \
-  --suite minimal_4track \
+  --suite step12_minimal \
   --full \
   --sample-limit 25 \
   --seed 0
@@ -142,16 +167,32 @@ AR and diffusion templates share a semantic contract while retaining the
 format required by each model family. Rendered prompt, template, and semantic
 hashes are stored with every request.
 
-### 3. Run the CPU-only mock pipeline
+### 3. Run the CPU-only end-to-end smoke pipeline
 
 ```bash
 dimebench config validate configs/smoke.yaml
-dimebench infer --config configs/smoke.yaml
+dimebench run --config configs/smoke.yaml
+dimebench leaderboard --run-dir outputs/smoke_diffusion_infilling
 ```
 
-Run the same command again to verify prediction-level resume and cache reuse.
-The mock adapter allocates no model weights and is suitable for local
-development and CI.
+The `run` command executes inference, parsing, per-sample evaluation, run
+sealing, summary export, and traceability checks. Run it again to verify
+prediction-level resume and cache reuse. The mock adapter allocates no model
+weights and is suitable for local development and CI.
+
+For an installed wheel, the shortest equivalent command is:
+
+```bash
+dimebench smoke --output-dir outputs
+```
+
+The same stages can also be invoked independently:
+
+```bash
+dimebench infer --config configs/smoke.yaml
+dimebench evaluate --run-dir outputs/smoke_diffusion_infilling
+dimebench summarize --run-dir outputs/smoke_diffusion_infilling
+```
 
 ## Real-model evaluation
 
@@ -161,19 +202,21 @@ Tracked model configurations currently include:
   adapter;
 - `GSAI-ML/LLaDA-8B-Instruct` through the native masked-diffusion adapter.
 
-The tracked minimal evaluation matrix runs one selected dataset in every track
+The Step 12 minimal acceptance matrix runs one selected dataset in every track
 with both models:
 
-| Track              | Dataset          | Samples | dLLM NFEs |
-| ------------------ | ---------------- | ------: | --------: |
-| General capability | GSM8K            |      25 |        16 |
-| Text infilling     | WikiText-103     |      25 |        16 |
-| Text editing       | Synthetic Repair |      25 |        16 |
-| Reasoning          | WinoGrande       |      25 |        16 |
+| Track | Dataset | Samples | dLLM NFEs |
+|---|---|---:|---:|
+| General capability | GSM8K | 25 | 16 |
+| Text infilling | WikiText-103 | 25 | 16 |
+| Text editing | Synthetic Repair | 25 | 16 |
+| Reasoning | WinoGrande | 25 | 16 |
 
-The matrix is stored in `configs/experiments/minimal_4track.yaml`. It produces
-eight isolated run directories and independently regenerates every score from
-saved raw predictions.
+The gate produces eight run directories and independently regenerates every
+score from saved raw predictions. The model IDs may be replaced by local
+checkpoint paths without changing the evaluation contract. See the
+[paper-reproduction guide](docs/reproduction/paper.md) for the portable
+end-to-end workflow.
 
 ## Configuration
 
@@ -269,9 +312,44 @@ adapter version, dataset and ordered-sample hashes, environment, and hashes of
 the canonical artifacts. `sample_metrics.jsonl` links each score to the exact
 prediction hash. Final summaries retain contributing sample IDs and coverage.
 
+## Aggregation and paper reproduction
+
+Step 14 aggregates results in the fixed order `sample -> dataset -> Track ->
+benchmark`. It never embeds paper scores in source code. Each exported cell
+retains its source run IDs, contributing-sample hashes, and source summary
+hashes.
+
+Validate and independently recompute one sealed run:
+
+```bash
+dimebench evaluate --run-dir outputs/<run_id>
+```
+
+Summarize a collection of completed run directories:
+
+```bash
+dimebench summarize \
+  --run-dir outputs/aaai2027/paper_full/runs \
+  --output-dir reports/aaai2027/paper_full
+```
+
+Regenerate the tracked paper deliverables:
+
+```bash
+dimebench reproduce paper \
+  --config configs/experiments/aaai2027/paper_full.yaml
+```
+
+The output contains machine-readable benchmark summaries, tidy dataset/Track/
+benchmark CSV files, matched AR/dLLM comparisons, figure-input JSON/CSV, paper
+tables in JSON/CSV/Markdown/LaTeX, a traceability manifest, and hashes for all
+generated artifacts. The full-paper config fails when a mapped paper cell is
+missing. Lightweight private checks can opt into partial-table generation in a
+separate local experiment configuration.
+
 ## Single- and multi-GPU runners
 
-DiME-Bench provides three execution backends:
+Step 13 adds three execution backends:
 
 - `LocalRunner`: sequential jobs on one GPU;
 - `DistributedRunner`: deterministic, cost-aware data parallelism across GPUs
@@ -302,23 +380,47 @@ report = runner.run(jobs)  # tuple[BenchmarkJob, ...]
 ```
 
 This is one-process-per-GPU data parallelism across independent benchmark jobs,
-not tensor/model parallelism within one model. Runner contract tests verify
-that sequential and distributed execution produce identical scores and that
-retries preserve durable checkpoints.
+not tensor/model parallelism within one model. Reproducible deployments should
+confirm that one- and multi-GPU runs produce identical scores and that retry
+preserves existing artifacts.
+
+## Documentation, leaderboard, and v1 release
+
+Start with the [Quick Start](docs/getting-started/quickstart.md), then see the
+[architecture](docs/concepts/architecture.md),
+[result formats](docs/concepts/results.md),
+[Track overview](docs/tracks/overview.md), and
+[paper reproduction guide](docs/reproduction/paper.md). Runnable extension
+examples for models, datasets, tasks, and metrics are under `examples/`.
+
+Public ranking accepts only the versioned, hash-checked
+`result-submission.json`; a bare `benchmark-summary.json` is rejected:
+
+```bash
+python scripts/release_benchmark.py \
+  --summary reports/aaai2027/paper_full/benchmark-summary.json
+python scripts/build_leaderboard.py
+```
+
+The frozen reference bundle is under `results/releases/v1.0.0/`. Its manifest
+hashes every protocol, configuration, data manifest, schema, reproduction
+artifact, and container recipe. The static site is under
+`leaderboard/static/v1.0.0/`; its summary must be byte-identical to the release
+summary. See the [result-submission guide](docs/guides/submit-results.md).
+
+Build the CPU smoke container with:
+
+```bash
+docker build -f containers/Dockerfile -t dime-bench:1.0.0 .
+docker run --rm -v "$PWD/container-results:/results" dime-bench:1.0.0
+```
 
 ## Validation
 
-Validate the frozen protocol and bundled data:
+Run the public CPU quality gates locally:
 
 ```bash
-python scripts/validate_specification.py
-python scripts/prepare_data.py --suite dime_bench_v1
-python scripts/validate_data.py data/processed/dime_bench_v1
-```
-
-Full local quality checks:
-
-```bash
+python scripts/validate_step0.py
 ruff check dimebench scripts tests
 mypy dimebench scripts
 pytest -q
@@ -326,15 +428,22 @@ python -m build
 twine check dist/*
 ```
 
-Real-model evaluation requires a CUDA-enabled environment and appropriately
-licensed model checkpoints. It is deliberately separate from the default
-CPU-only test suite.
+GPU tests are marked `gpu` and remain separate from the default CPU suite:
+
+```bash
+pytest -m gpu tests/gpu -ra
+```
+
+The repository CI workflows run lint/type checks, the CPU test matrix, and the
+installed-wheel smoke evaluation. Real-model experiments remain explicit
+research runs because they require gated checkpoints and accelerator access.
 
 ## Repository layout
 
 ```text
 dimebench/
 ├── configs/               # model, task, experiment, and runtime configs
+├── containers/            # reproducible CPU smoke image recipe
 ├── data/                  # manifests, cards, registry, and small fixtures
 ├── dimebench/
 │   ├── artifacts/         # manifests, prediction/metric stores, provenance
@@ -346,14 +455,20 @@ dimebench/
 │   ├── models/            # mock, Hugging Face AR, and LLaDA adapters
 │   ├── postprocessors/    # parsers and failure classification
 │   ├── prompts/           # versioned AR/dLLM prompt contracts
+│   ├── reporting/         # paper tables, LaTeX, and plotting inputs
 │   ├── runners/           # local, multi-GPU, resource, and Slurm backends
 │   ├── schemas/           # strict public data contracts
+│   ├── summarizers/       # dataset, Track, benchmark, AR/dLLM aggregation
 │   ├── tasks/             # track-specific task implementations
-│   └── tracks/            # end-to-end track orchestration
-├── docs/                  # protocol and validation guides
-├── scripts/               # reproducible validation entry points
+│   ├── tracks/            # end-to-end track orchestration
+│   └── workflow.py        # unified infer -> evaluate -> seal workflow
+├── docs/                  # user, extension, protocol, reproduction guides
+├── examples/              # model, dataset, task, and metric extensions
+├── leaderboard/           # static versioned leaderboard application
+├── results/releases/      # immutable content-addressed releases
+├── scripts/               # data, reproduction, release, leaderboard tools
 ├── specification/         # machine-readable benchmark v1
-└── tests/                 # unit, contract, integration, and GPU gates
+└── tests/                 # unit, contract, golden, integration, smoke, GPU
 ```
 
 The outer `dimebench/` is the repository root. The inner `dimebench/` is the

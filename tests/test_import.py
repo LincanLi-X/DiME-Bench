@@ -10,7 +10,7 @@ from dimebench.cli.main import build_parser, main
 
 class PackageImportTests(unittest.TestCase):
     def test_package_exports_version(self) -> None:
-        self.assertEqual(dimebench.__version__, "0.1.0.dev0")
+        self.assertEqual(dimebench.__version__, "1.0.0")
         self.assertEqual(dimebench.__all__, ["__version__"])
 
     def test_cli_parser_identity(self) -> None:
@@ -37,7 +37,7 @@ class PackageImportTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.strip(), "dimebench 0.1.0.dev0")
+        self.assertEqual(result.stdout.strip(), "dimebench 1.0.0")
 
 
 if __name__ == "__main__":

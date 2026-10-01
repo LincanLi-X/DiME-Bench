@@ -1,0 +1,51 @@
+schema_version: "1.0"
+suite: step12_minimal
+sample_count: 25
+dllm_nfes: 16
+seed: 0
+
+ar_model_config: configs/models/autoregressive/llama3_8b_instruct.yaml
+dllm_model_config: configs/models/diffusion/llada_8b_instruct.yaml
+
+# Frozen neural diagnostic backend used by Tracks 2 and 3.
+nli_model_id: cross-encoder/nli-deberta-v3-small
+nli_revision: fa2804872c3b4bd748f38c0185cc85775361e735
+
+tracks:
+  - track: track1_general
+    dataset_id: gsm8k_general
+    split: test
+    task_config: configs/tasks/track1_general/gsm8k_general.yaml
+    manifest: data/manifests/gsm8k_general.yaml
+    max_output_tokens: 64
+    dllm_block_length: 32
+    mask_policy: append
+
+  - track: track2_infilling
+    dataset_id: wikitext103
+    split: test
+    task_config: configs/tasks/track2_infilling/wikitext103.yaml
+    manifest: data/manifests/wikitext103.yaml
+    # Validation-only smoke budget; both model families receive the same canvas.
+    max_output_tokens: 128
+    dllm_block_length: 32
+    mask_policy: bounded_middle
+
+  - track: track3_editing
+    dataset_id: synthetic_repair
+    split: test
+    task_config: configs/tasks/track3_editing/synthetic_repair.yaml
+    manifest: data/manifests/synthetic_repair.yaml
+    # Validation-only smoke budget; both model families receive the same canvas.
+    max_output_tokens: 128
+    dllm_block_length: 32
+    mask_policy: append
+
+  - track: track4_reasoning
+    dataset_id: winogrande_planning
+    split: validation
+    task_config: configs/tasks/track4_reasoning/winogrande_planning.yaml
+    manifest: data/manifests/winogrande_planning.yaml
+    max_output_tokens: 16
+    dllm_block_length: 16
+    mask_policy: append

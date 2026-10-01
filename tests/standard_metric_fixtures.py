@@ -1,4 +1,4 @@
-"""Builders shared by standard-metric tests."""
+"""Builders shared by Step 10 standard-metric tests."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ def result_for(sample: SampleRecord, parsed_output: Any, *, status: str = "succe
     if status == "failure":
         kwargs.update(failure_class="parse_error", error_message="fixture failure")
     return ResultSpec(
-        run_id="standard-metric-fixture",
+        run_id="step10",
         config_hash="a" * 64,
         sample_id=sample.sample_id,
         model_id="fixture-model",

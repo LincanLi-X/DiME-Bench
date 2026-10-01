@@ -1,0 +1,546 @@
+{
+  "Table 2": {
+    "columns": [
+      "MMLU-Pro",
+      "HellaSwag",
+      "GSM8K",
+      "HumanEval",
+      "IFEval"
+    ],
+    "rows": [
+      {
+        "cells": {
+          "GSM8K": {
+            "scaled_value": 48.0,
+            "source_run_ids": [
+              "step12-track1_general-gsm8k_general-dllm"
+            ],
+            "source_sample_ids_hashes": [
+              "340716389a309b4c8091839f024082bcdbb3b221807efae79ea42b50704ded1b"
+            ],
+            "source_summary_hashes": [
+              "fbebad31bab8b873292175bcbd408f00abffae5e2aa8c1ccbd306d1e153c1a42"
+            ],
+            "status": "present",
+            "value": 0.48
+          },
+          "HellaSwag": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "HumanEval": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "IFEval": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "MMLU-Pro": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          }
+        },
+        "dataset_id": null,
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "row_id": "diffusion:llada-8b-instruct"
+      },
+      {
+        "cells": {
+          "GSM8K": {
+            "scaled_value": 16.0,
+            "source_run_ids": [
+              "step12-track1_general-gsm8k_general-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "340716389a309b4c8091839f024082bcdbb3b221807efae79ea42b50704ded1b"
+            ],
+            "source_summary_hashes": [
+              "ced30cfd226813ff395b74eaf30b90245b93e471ab9ce096f65d4e97dbb95e45"
+            ],
+            "status": "present",
+            "value": 0.16
+          },
+          "HellaSwag": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "HumanEval": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "IFEval": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "MMLU-Pro": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          }
+        },
+        "dataset_id": null,
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "row_id": "autoregressive:llama3-8b-instruct"
+      }
+    ],
+    "schema_version": "1.0",
+    "table_id": "Table 2"
+  },
+  "Table 3": {
+    "columns": [
+      "Wiki F1",
+      "CNN R-L",
+      "arXiv BS",
+      "Boundary Consistency",
+      "Contradiction Rate"
+    ],
+    "rows": [
+      {
+        "cells": {
+          "Boundary Consistency": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "CNN R-L": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "Contradiction Rate": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "Wiki F1": {
+            "scaled_value": 0.0,
+            "source_run_ids": [
+              "step12-track2_infilling-wikitext103-dllm"
+            ],
+            "source_sample_ids_hashes": [
+              "ac870c794892e491eb6c5ca5f9660344bbb21ba5ebb4a1e565e8db46a2089cca"
+            ],
+            "source_summary_hashes": [
+              "ac7b7706db8f0eb254c2841522c24ee9d44a364260143dfe10e16732164835b6"
+            ],
+            "status": "present",
+            "value": 0.0
+          },
+          "arXiv BS": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          }
+        },
+        "dataset_id": null,
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "row_id": "diffusion:llada-8b-instruct"
+      },
+      {
+        "cells": {
+          "Boundary Consistency": {
+            "scaled_value": 4.166666666666666,
+            "source_run_ids": [
+              "step12-track2_infilling-wikitext103-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "ad34b840e65ee8a8ba00577d8b03a4754a6a61c75444211b0e68a976699a646f"
+            ],
+            "source_summary_hashes": [
+              "273c4574ecce5833e1147e5fbfd1130e7f93f0d61c51af8072aed70a0fd55da9"
+            ],
+            "status": "present",
+            "value": 0.041666666666666664
+          },
+          "CNN R-L": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "Contradiction Rate": {
+            "scaled_value": 45.83333333333333,
+            "source_run_ids": [
+              "step12-track2_infilling-wikitext103-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "ad34b840e65ee8a8ba00577d8b03a4754a6a61c75444211b0e68a976699a646f"
+            ],
+            "source_summary_hashes": [
+              "273c4574ecce5833e1147e5fbfd1130e7f93f0d61c51af8072aed70a0fd55da9"
+            ],
+            "status": "present",
+            "value": 0.4583333333333333
+          },
+          "Wiki F1": {
+            "scaled_value": 16.380783933880505,
+            "source_run_ids": [
+              "step12-track2_infilling-wikitext103-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "ac870c794892e491eb6c5ca5f9660344bbb21ba5ebb4a1e565e8db46a2089cca"
+            ],
+            "source_summary_hashes": [
+              "273c4574ecce5833e1147e5fbfd1130e7f93f0d61c51af8072aed70a0fd55da9"
+            ],
+            "status": "present",
+            "value": 0.16380783933880505
+          },
+          "arXiv BS": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          }
+        },
+        "dataset_id": null,
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "row_id": "autoregressive:llama3-8b-instruct"
+      }
+    ],
+    "schema_version": "1.0",
+    "table_id": "Table 3"
+  },
+  "Table 4": {
+    "columns": [
+      "Edit Success",
+      "Preservation",
+      "Over-Edit",
+      "Contradiction Reduction"
+    ],
+    "rows": [
+      {
+        "cells": {
+          "Contradiction Reduction": {
+            "scaled_value": 24.0,
+            "source_run_ids": [
+              "step12-track3_editing-synthetic_repair-dllm"
+            ],
+            "source_sample_ids_hashes": [
+              "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206"
+            ],
+            "source_summary_hashes": [
+              "95eb94e459b323e476b196dba4e1ae71f02cdea72517d72cfa44fcffd1ed6140"
+            ],
+            "status": "present",
+            "value": 0.24
+          },
+          "Edit Success": {
+            "scaled_value": 84.0,
+            "source_run_ids": [
+              "step12-track3_editing-synthetic_repair-dllm"
+            ],
+            "source_sample_ids_hashes": [
+              "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206"
+            ],
+            "source_summary_hashes": [
+              "95eb94e459b323e476b196dba4e1ae71f02cdea72517d72cfa44fcffd1ed6140"
+            ],
+            "status": "present",
+            "value": 0.84
+          },
+          "Over-Edit": {
+            "scaled_value": 9.59,
+            "source_run_ids": [
+              "step12-track3_editing-synthetic_repair-dllm"
+            ],
+            "source_sample_ids_hashes": [
+              "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206"
+            ],
+            "source_summary_hashes": [
+              "95eb94e459b323e476b196dba4e1ae71f02cdea72517d72cfa44fcffd1ed6140"
+            ],
+            "status": "present",
+            "value": 0.0959
+          },
+          "Preservation": {
+            "scaled_value": 92.92203580732992,
+            "source_run_ids": [
+              "step12-track3_editing-synthetic_repair-dllm"
+            ],
+            "source_sample_ids_hashes": [
+              "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206"
+            ],
+            "source_summary_hashes": [
+              "95eb94e459b323e476b196dba4e1ae71f02cdea72517d72cfa44fcffd1ed6140"
+            ],
+            "status": "present",
+            "value": 0.9292203580732992
+          }
+        },
+        "dataset_id": "synthetic_repair",
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "row_id": "diffusion:llada-8b-instruct:synthetic_repair"
+      },
+      {
+        "cells": {
+          "Contradiction Reduction": {
+            "scaled_value": 76.0,
+            "source_run_ids": [
+              "step12-track3_editing-synthetic_repair-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206"
+            ],
+            "source_summary_hashes": [
+              "c9d04cc7e70e1d9de6af02b1b4ac009730b9c9f55f4470350075c6b56c215ba6"
+            ],
+            "status": "present",
+            "value": 0.76
+          },
+          "Edit Success": {
+            "scaled_value": 0.0,
+            "source_run_ids": [
+              "step12-track3_editing-synthetic_repair-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206"
+            ],
+            "source_summary_hashes": [
+              "c9d04cc7e70e1d9de6af02b1b4ac009730b9c9f55f4470350075c6b56c215ba6"
+            ],
+            "status": "present",
+            "value": 0.0
+          },
+          "Over-Edit": {
+            "scaled_value": 94.21664293785238,
+            "source_run_ids": [
+              "step12-track3_editing-synthetic_repair-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206"
+            ],
+            "source_summary_hashes": [
+              "c9d04cc7e70e1d9de6af02b1b4ac009730b9c9f55f4470350075c6b56c215ba6"
+            ],
+            "status": "present",
+            "value": 0.9421664293785238
+          },
+          "Preservation": {
+            "scaled_value": 93.23805312334724,
+            "source_run_ids": [
+              "step12-track3_editing-synthetic_repair-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "bc2dce292152b9de5ec264da6f1d6b3674ead44a6899aa4996e1fad811f32206"
+            ],
+            "source_summary_hashes": [
+              "c9d04cc7e70e1d9de6af02b1b4ac009730b9c9f55f4470350075c6b56c215ba6"
+            ],
+            "status": "present",
+            "value": 0.9323805312334724
+          }
+        },
+        "dataset_id": "synthetic_repair",
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "row_id": "autoregressive:llama3-8b-instruct:synthetic_repair"
+      }
+    ],
+    "schema_version": "1.0",
+    "table_id": "Table 4"
+  },
+  "Table 5": {
+    "columns": [
+      "GSM8K",
+      "MATH",
+      "Chain Avg.",
+      "WinoG.",
+      "Path-Star",
+      "Plan Avg."
+    ],
+    "rows": [
+      {
+        "cells": {
+          "Chain Avg.": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "GSM8K": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "MATH": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "Path-Star": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "Plan Avg.": {
+            "scaled_value": 0.0,
+            "source_run_ids": [
+              "step12-track4_reasoning-winogrande_planning-dllm"
+            ],
+            "source_sample_ids_hashes": [
+              "a170407b20e4f4bd0d74b885d6bd989abd22e36933561347e23635162a9b7041"
+            ],
+            "source_summary_hashes": [
+              "4c46f5cdb436df86c715e162b57317ca9ba7e20e91fc4253bdc4c38abfedb681"
+            ],
+            "status": "present",
+            "value": 0.0
+          },
+          "WinoG.": {
+            "scaled_value": 0.0,
+            "source_run_ids": [
+              "step12-track4_reasoning-winogrande_planning-dllm"
+            ],
+            "source_sample_ids_hashes": [
+              "a170407b20e4f4bd0d74b885d6bd989abd22e36933561347e23635162a9b7041"
+            ],
+            "source_summary_hashes": [
+              "4c46f5cdb436df86c715e162b57317ca9ba7e20e91fc4253bdc4c38abfedb681"
+            ],
+            "status": "present",
+            "value": 0.0
+          }
+        },
+        "dataset_id": null,
+        "model_family": "diffusion",
+        "model_id": "llada-8b-instruct",
+        "row_id": "diffusion:llada-8b-instruct"
+      },
+      {
+        "cells": {
+          "Chain Avg.": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "GSM8K": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "MATH": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "Path-Star": {
+            "scaled_value": null,
+            "source_run_ids": [],
+            "source_sample_ids_hashes": [],
+            "source_summary_hashes": [],
+            "status": "missing",
+            "value": null
+          },
+          "Plan Avg.": {
+            "scaled_value": 32.0,
+            "source_run_ids": [
+              "step12-track4_reasoning-winogrande_planning-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "a170407b20e4f4bd0d74b885d6bd989abd22e36933561347e23635162a9b7041"
+            ],
+            "source_summary_hashes": [
+              "c5d51bfeb989c35c893e9ba0ec9f04bdca629340a0d34fb8de0a6cb3bc75c14f"
+            ],
+            "status": "present",
+            "value": 0.32
+          },
+          "WinoG.": {
+            "scaled_value": 32.0,
+            "source_run_ids": [
+              "step12-track4_reasoning-winogrande_planning-ar"
+            ],
+            "source_sample_ids_hashes": [
+              "a170407b20e4f4bd0d74b885d6bd989abd22e36933561347e23635162a9b7041"
+            ],
+            "source_summary_hashes": [
+              "c5d51bfeb989c35c893e9ba0ec9f04bdca629340a0d34fb8de0a6cb3bc75c14f"
+            ],
+            "status": "present",
+            "value": 0.32
+          }
+        },
+        "dataset_id": null,
+        "model_family": "autoregressive",
+        "model_id": "llama3-8b-instruct",
+        "row_id": "autoregressive:llama3-8b-instruct"
+      }
+    ],
+    "schema_version": "1.0",
+    "table_id": "Table 5"
+  }
+}

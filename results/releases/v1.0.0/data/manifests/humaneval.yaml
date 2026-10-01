@@ -1,0 +1,22 @@
+schema_version: "1.0"
+id: humaneval
+display_name: HumanEval
+version: dime-v1
+track: track1_general
+record_kind: generation
+license: MIT
+homepage: https://huggingface.co/datasets/openai/openai_humaneval
+citation: chen2021humaneval
+source:
+  type: huggingface
+  name_or_path: openai/openai_humaneval
+  revision: main
+splits: [test]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: generation
+  field_map:
+    instruction: prompt
+    references: canonical_solution
+    tests: test
+notes: Unit-test execution is implemented by the later evaluator layer.

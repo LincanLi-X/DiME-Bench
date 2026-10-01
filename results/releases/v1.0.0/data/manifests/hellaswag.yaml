@@ -1,0 +1,23 @@
+schema_version: "1.0"
+id: hellaswag
+display_name: HellaSwag
+version: dime-v1
+track: track1_general
+record_kind: multiple_choice
+license: MIT
+homepage: https://huggingface.co/datasets/Rowan/hellaswag
+citation: zellers2019hellaswag
+source:
+  type: huggingface
+  name_or_path: Rowan/hellaswag
+  revision: main
+splits: [validation]
+sample_path: samples/dime_bench_v1_samples.jsonl
+preprocessing:
+  strategy: multiple_choice
+  field_map:
+    question: ctx
+    choices: endings
+    answer_index: label
+    context: activity_label
+notes: Pin the upstream revision to a commit before a release split is frozen.

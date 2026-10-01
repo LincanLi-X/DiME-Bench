@@ -1,0 +1,12 @@
+id: pathstar_planning
+track: track4_reasoning
+dataset_id: pathstar_planning
+type: reasoning
+prompt_id: track4.direct_answer
+prompt_version: "1.0.0"
+parser_id: path_answer
+parser_version: "1.0.0"
+metrics: [path_validity, planning_average]
+primary_metric: path_validity
+max_output_tokens: 128
+reasoning_type: planning

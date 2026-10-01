@@ -1,0 +1,26 @@
+kind,model_id,model_family,track,dataset_id,metric_id,value,source_run_ids
+dataset_score,llama3-8b-instruct,autoregressive,track1_general,gsm8k_general,normalized_exact_match,0.16,step12-track1_general-gsm8k_general-ar
+dataset_score,llada-8b-instruct,diffusion,track1_general,gsm8k_general,normalized_exact_match,0.48,step12-track1_general-gsm8k_general-dllm
+dataset_score,llama3-8b-instruct,autoregressive,track2_infilling,wikitext103,token_f1,0.16380783933880505,step12-track2_infilling-wikitext103-ar
+dataset_score,llada-8b-instruct,diffusion,track2_infilling,wikitext103,token_f1,0.0,step12-track2_infilling-wikitext103-dllm
+dataset_score,llama3-8b-instruct,autoregressive,track3_editing,synthetic_repair,edit_success,0.0,step12-track3_editing-synthetic_repair-ar
+dataset_score,llada-8b-instruct,diffusion,track3_editing,synthetic_repair,edit_success,0.84,step12-track3_editing-synthetic_repair-dllm
+dataset_score,llama3-8b-instruct,autoregressive,track4_reasoning,winogrande_planning,option_accuracy,0.32,step12-track4_reasoning-winogrande_planning-ar
+dataset_score,llada-8b-instruct,diffusion,track4_reasoning,winogrande_planning,option_accuracy,0.0,step12-track4_reasoning-winogrande_planning-dllm
+track_score,llada-8b-instruct,diffusion,track1_general,,macro_score,0.48,step12-track1_general-gsm8k_general-dllm
+track_score,llama3-8b-instruct,autoregressive,track1_general,,macro_score,0.16,step12-track1_general-gsm8k_general-ar
+track_score,llada-8b-instruct,diffusion,track2_infilling,,macro_score,0.0,step12-track2_infilling-wikitext103-dllm
+track_score,llama3-8b-instruct,autoregressive,track2_infilling,,macro_score,0.16380783933880505,step12-track2_infilling-wikitext103-ar
+track_score,llada-8b-instruct,diffusion,track3_editing,,macro_score,0.84,step12-track3_editing-synthetic_repair-dllm
+track_score,llama3-8b-instruct,autoregressive,track3_editing,,macro_score,0.0,step12-track3_editing-synthetic_repair-ar
+track_score,llada-8b-instruct,diffusion,track4_reasoning,,macro_score,0.0,step12-track4_reasoning-winogrande_planning-dllm
+track_score,llama3-8b-instruct,autoregressive,track4_reasoning,,macro_score,0.32,step12-track4_reasoning-winogrande_planning-ar
+benchmark_score,llada-8b-instruct,diffusion,,,benchmark_score,0.32999999999999996,step12-track1_general-gsm8k_general-dllm;step12-track2_infilling-wikitext103-dllm;step12-track3_editing-synthetic_repair-dllm;step12-track4_reasoning-winogrande_planning-dllm
+benchmark_score,llama3-8b-instruct,autoregressive,,,benchmark_score,0.16095195983470126,step12-track1_general-gsm8k_general-ar;step12-track2_infilling-wikitext103-ar;step12-track3_editing-synthetic_repair-ar;step12-track4_reasoning-winogrande_planning-ar
+ar_dllm_delta,llada-8b-instruct vs llama3-8b-instruct,comparison,track1_general,gsm8k_general,normalized_exact_match,0.31999999999999995,step12-track1_general-gsm8k_general-ar;step12-track1_general-gsm8k_general-dllm
+ar_dllm_delta,llada-8b-instruct vs llama3-8b-instruct,comparison,track2_infilling,wikitext103,token_f1,-0.16380783933880505,step12-track2_infilling-wikitext103-ar;step12-track2_infilling-wikitext103-dllm
+ar_dllm_delta,llada-8b-instruct vs llama3-8b-instruct,comparison,track3_editing,synthetic_repair,contradiction_reduction_rate,-0.52,step12-track3_editing-synthetic_repair-ar;step12-track3_editing-synthetic_repair-dllm
+ar_dllm_delta,llada-8b-instruct vs llama3-8b-instruct,comparison,track3_editing,synthetic_repair,edit_success,0.84,step12-track3_editing-synthetic_repair-ar;step12-track3_editing-synthetic_repair-dllm
+ar_dllm_delta,llada-8b-instruct vs llama3-8b-instruct,comparison,track3_editing,synthetic_repair,over_edit_rate,0.8462664293785238,step12-track3_editing-synthetic_repair-ar;step12-track3_editing-synthetic_repair-dllm
+ar_dllm_delta,llada-8b-instruct vs llama3-8b-instruct,comparison,track3_editing,synthetic_repair,preservation_score,-0.003160173160173252,step12-track3_editing-synthetic_repair-ar;step12-track3_editing-synthetic_repair-dllm
+ar_dllm_delta,llada-8b-instruct vs llama3-8b-instruct,comparison,track4_reasoning,winogrande_planning,option_accuracy,-0.32,step12-track4_reasoning-winogrande_planning-ar;step12-track4_reasoning-winogrande_planning-dllm

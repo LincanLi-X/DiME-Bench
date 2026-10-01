@@ -1,0 +1,23 @@
+[
+  {
+    "name": "one_of_two_boundaries_is_consistent",
+    "metric": "boundary_consistency",
+    "probabilities": [0.9, 0.2],
+    "threshold": 0.5,
+    "expected": 0.5
+  },
+  {
+    "name": "one_boundary_is_contradictory",
+    "metric": "contradiction_rate",
+    "probabilities": [0.1, 0.8],
+    "threshold": 0.5,
+    "expected": 1.0
+  },
+  {
+    "name": "evidence_contradiction_is_removed",
+    "metric": "contradiction_reduction_rate",
+    "probabilities": [0.9, 0.1],
+    "threshold": 0.5,
+    "expected": 1.0
+  }
+]

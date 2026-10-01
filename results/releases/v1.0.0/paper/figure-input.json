@@ -1,0 +1,315 @@
+[
+  {
+    "dataset_id": "gsm8k_general",
+    "kind": "dataset_score",
+    "metric_id": "normalized_exact_match",
+    "model_family": "autoregressive",
+    "model_id": "llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track1_general-gsm8k_general-ar"
+    ],
+    "track": "track1_general",
+    "value": 0.16
+  },
+  {
+    "dataset_id": "gsm8k_general",
+    "kind": "dataset_score",
+    "metric_id": "normalized_exact_match",
+    "model_family": "diffusion",
+    "model_id": "llada-8b-instruct",
+    "source_run_ids": [
+      "step12-track1_general-gsm8k_general-dllm"
+    ],
+    "track": "track1_general",
+    "value": 0.48
+  },
+  {
+    "dataset_id": "wikitext103",
+    "kind": "dataset_score",
+    "metric_id": "token_f1",
+    "model_family": "autoregressive",
+    "model_id": "llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track2_infilling-wikitext103-ar"
+    ],
+    "track": "track2_infilling",
+    "value": 0.16380783933880505
+  },
+  {
+    "dataset_id": "wikitext103",
+    "kind": "dataset_score",
+    "metric_id": "token_f1",
+    "model_family": "diffusion",
+    "model_id": "llada-8b-instruct",
+    "source_run_ids": [
+      "step12-track2_infilling-wikitext103-dllm"
+    ],
+    "track": "track2_infilling",
+    "value": 0.0
+  },
+  {
+    "dataset_id": "synthetic_repair",
+    "kind": "dataset_score",
+    "metric_id": "edit_success",
+    "model_family": "autoregressive",
+    "model_id": "llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track3_editing-synthetic_repair-ar"
+    ],
+    "track": "track3_editing",
+    "value": 0.0
+  },
+  {
+    "dataset_id": "synthetic_repair",
+    "kind": "dataset_score",
+    "metric_id": "edit_success",
+    "model_family": "diffusion",
+    "model_id": "llada-8b-instruct",
+    "source_run_ids": [
+      "step12-track3_editing-synthetic_repair-dllm"
+    ],
+    "track": "track3_editing",
+    "value": 0.84
+  },
+  {
+    "dataset_id": "winogrande_planning",
+    "kind": "dataset_score",
+    "metric_id": "option_accuracy",
+    "model_family": "autoregressive",
+    "model_id": "llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track4_reasoning-winogrande_planning-ar"
+    ],
+    "track": "track4_reasoning",
+    "value": 0.32
+  },
+  {
+    "dataset_id": "winogrande_planning",
+    "kind": "dataset_score",
+    "metric_id": "option_accuracy",
+    "model_family": "diffusion",
+    "model_id": "llada-8b-instruct",
+    "source_run_ids": [
+      "step12-track4_reasoning-winogrande_planning-dllm"
+    ],
+    "track": "track4_reasoning",
+    "value": 0.0
+  },
+  {
+    "dataset_id": null,
+    "kind": "track_score",
+    "metric_id": "macro_score",
+    "model_family": "diffusion",
+    "model_id": "llada-8b-instruct",
+    "source_run_ids": [
+      "step12-track1_general-gsm8k_general-dllm"
+    ],
+    "track": "track1_general",
+    "value": 0.48
+  },
+  {
+    "dataset_id": null,
+    "kind": "track_score",
+    "metric_id": "macro_score",
+    "model_family": "autoregressive",
+    "model_id": "llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track1_general-gsm8k_general-ar"
+    ],
+    "track": "track1_general",
+    "value": 0.16
+  },
+  {
+    "dataset_id": null,
+    "kind": "track_score",
+    "metric_id": "macro_score",
+    "model_family": "diffusion",
+    "model_id": "llada-8b-instruct",
+    "source_run_ids": [
+      "step12-track2_infilling-wikitext103-dllm"
+    ],
+    "track": "track2_infilling",
+    "value": 0.0
+  },
+  {
+    "dataset_id": null,
+    "kind": "track_score",
+    "metric_id": "macro_score",
+    "model_family": "autoregressive",
+    "model_id": "llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track2_infilling-wikitext103-ar"
+    ],
+    "track": "track2_infilling",
+    "value": 0.16380783933880505
+  },
+  {
+    "dataset_id": null,
+    "kind": "track_score",
+    "metric_id": "macro_score",
+    "model_family": "diffusion",
+    "model_id": "llada-8b-instruct",
+    "source_run_ids": [
+      "step12-track3_editing-synthetic_repair-dllm"
+    ],
+    "track": "track3_editing",
+    "value": 0.84
+  },
+  {
+    "dataset_id": null,
+    "kind": "track_score",
+    "metric_id": "macro_score",
+    "model_family": "autoregressive",
+    "model_id": "llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track3_editing-synthetic_repair-ar"
+    ],
+    "track": "track3_editing",
+    "value": 0.0
+  },
+  {
+    "dataset_id": null,
+    "kind": "track_score",
+    "metric_id": "macro_score",
+    "model_family": "diffusion",
+    "model_id": "llada-8b-instruct",
+    "source_run_ids": [
+      "step12-track4_reasoning-winogrande_planning-dllm"
+    ],
+    "track": "track4_reasoning",
+    "value": 0.0
+  },
+  {
+    "dataset_id": null,
+    "kind": "track_score",
+    "metric_id": "macro_score",
+    "model_family": "autoregressive",
+    "model_id": "llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track4_reasoning-winogrande_planning-ar"
+    ],
+    "track": "track4_reasoning",
+    "value": 0.32
+  },
+  {
+    "dataset_id": null,
+    "kind": "benchmark_score",
+    "metric_id": "benchmark_score",
+    "model_family": "diffusion",
+    "model_id": "llada-8b-instruct",
+    "source_run_ids": [
+      "step12-track1_general-gsm8k_general-dllm",
+      "step12-track2_infilling-wikitext103-dllm",
+      "step12-track3_editing-synthetic_repair-dllm",
+      "step12-track4_reasoning-winogrande_planning-dllm"
+    ],
+    "track": null,
+    "value": 0.32999999999999996
+  },
+  {
+    "dataset_id": null,
+    "kind": "benchmark_score",
+    "metric_id": "benchmark_score",
+    "model_family": "autoregressive",
+    "model_id": "llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track1_general-gsm8k_general-ar",
+      "step12-track2_infilling-wikitext103-ar",
+      "step12-track3_editing-synthetic_repair-ar",
+      "step12-track4_reasoning-winogrande_planning-ar"
+    ],
+    "track": null,
+    "value": 0.16095195983470126
+  },
+  {
+    "dataset_id": "gsm8k_general",
+    "kind": "ar_dllm_delta",
+    "metric_id": "normalized_exact_match",
+    "model_family": "comparison",
+    "model_id": "llada-8b-instruct vs llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track1_general-gsm8k_general-ar",
+      "step12-track1_general-gsm8k_general-dllm"
+    ],
+    "track": "track1_general",
+    "value": 0.31999999999999995
+  },
+  {
+    "dataset_id": "wikitext103",
+    "kind": "ar_dllm_delta",
+    "metric_id": "token_f1",
+    "model_family": "comparison",
+    "model_id": "llada-8b-instruct vs llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track2_infilling-wikitext103-ar",
+      "step12-track2_infilling-wikitext103-dllm"
+    ],
+    "track": "track2_infilling",
+    "value": -0.16380783933880505
+  },
+  {
+    "dataset_id": "synthetic_repair",
+    "kind": "ar_dllm_delta",
+    "metric_id": "contradiction_reduction_rate",
+    "model_family": "comparison",
+    "model_id": "llada-8b-instruct vs llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track3_editing-synthetic_repair-ar",
+      "step12-track3_editing-synthetic_repair-dllm"
+    ],
+    "track": "track3_editing",
+    "value": -0.52
+  },
+  {
+    "dataset_id": "synthetic_repair",
+    "kind": "ar_dllm_delta",
+    "metric_id": "edit_success",
+    "model_family": "comparison",
+    "model_id": "llada-8b-instruct vs llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track3_editing-synthetic_repair-ar",
+      "step12-track3_editing-synthetic_repair-dllm"
+    ],
+    "track": "track3_editing",
+    "value": 0.84
+  },
+  {
+    "dataset_id": "synthetic_repair",
+    "kind": "ar_dllm_delta",
+    "metric_id": "over_edit_rate",
+    "model_family": "comparison",
+    "model_id": "llada-8b-instruct vs llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track3_editing-synthetic_repair-ar",
+      "step12-track3_editing-synthetic_repair-dllm"
+    ],
+    "track": "track3_editing",
+    "value": 0.8462664293785238
+  },
+  {
+    "dataset_id": "synthetic_repair",
+    "kind": "ar_dllm_delta",
+    "metric_id": "preservation_score",
+    "model_family": "comparison",
+    "model_id": "llada-8b-instruct vs llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track3_editing-synthetic_repair-ar",
+      "step12-track3_editing-synthetic_repair-dllm"
+    ],
+    "track": "track3_editing",
+    "value": -0.003160173160173252
+  },
+  {
+    "dataset_id": "winogrande_planning",
+    "kind": "ar_dllm_delta",
+    "metric_id": "option_accuracy",
+    "model_family": "comparison",
+    "model_id": "llada-8b-instruct vs llama3-8b-instruct",
+    "source_run_ids": [
+      "step12-track4_reasoning-winogrande_planning-ar",
+      "step12-track4_reasoning-winogrande_planning-dllm"
+    ],
+    "track": "track4_reasoning",
+    "value": -0.32
+  }
+]
