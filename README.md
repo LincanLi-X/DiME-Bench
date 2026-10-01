@@ -490,33 +490,18 @@ importable Python package, so users write `import dimebench` after installation.
 Changes to sample selection, prompt semantics, parser behavior, metric formulas,
 aggregation, or failure treatment require a benchmark protocol version bump.
 
-## Reproducibility policy
-
-Headline results must retain:
-
-- model and tokenizer revisions;
-- processed dataset manifest and ordered sample hashes;
-- prompt, parser, evaluator, and adapter versions;
-- complete AR/dLLM decoding controls;
-- raw predictions, per-sample metrics, and aggregate contributors;
-- software environment and hardware metadata;
-- explicit failures, null diagnostics, and coverage.
-
-See [failure-policy.md](docs/specification/failure-policy.md) for retry,
-failure-retention, and metric-eligibility rules.
 
 ## Citation
 
-The paper citation will be added when the DiME-Bench manuscript is publicly
-released. Until then, please cite the repository URL and the protocol version
-used by your experiment.
+```
+@inproceedings{anonymous2026dimebench,
+  title     = {{DiME-Bench}: Mechanism-Oriented Suite for Assessing Inference and Capabilities of Diffusion Language Models},
+  author    = {Anonymous},
+  booktitle = {Under Review},
+  year      = {2026}
+}
+```
 
-## Acknowledgements
-
-The repository organization and configuration-first user experience are
-inspired in part by [OpenCompass](https://github.com/open-compass/opencompass).
-DiME-Bench implements a distinct mechanism-oriented protocol, dLLM decoding
-controls, diagnostics, and AR/dLLM comparison workflow.
 
 ## License
 
