@@ -67,9 +67,12 @@ python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 ```
 
-### ⬇️💡Installation during anonymous review
+### Installation during anonymous review
 
-***During double-blind review period, the source code is distributed through an anonymized, read-only repository.***
+> [!IMPORTANT]
+> This section applies during the double-blind review period. The source code
+> is distributed exclusively through an anonymized, read-only repository.
+> Please use the anonymous link below and select **Download ZIP**.
 
 1. Open the [anonymous DiME-Bench repository](https://anonymous.4open.science/r/DiME-Bench-A6F4/).
 2. Select **Download ZIP** and extract the downloaded archive.
@@ -85,7 +88,7 @@ python -m pip install --upgrade pip
 python -m pip install -e .
 ```
 
-**To validate the built release artifact rather than an editable checkout:**
+#### To validate the built release artifact rather than an editable checkout:
 
 ```bash
 python -m build
