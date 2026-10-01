@@ -398,11 +398,11 @@ python scripts/release_benchmark.py \
 python scripts/build_leaderboard.py
 ```
 
-The frozen reference bundle is under `results/releases/v1.0.0/`. Its manifest
-hashes every protocol, configuration, data manifest, schema, reproduction
-artifact, and container recipe. The static site is under
-`leaderboard/static/v1.0.0/`; its summary must be byte-identical to the release
-summary. See the [result-submission guide](docs/guides/submit-results.md).
+DiME-Bench provides versioned schemas and utilities for packaging benchmark
+outputs into hash-validated result submissions and generating a static
+leaderboard. Generated result bundles and leaderboard artifacts are stored
+locally and are not committed to this repository. See the
+[result-submission guide](docs/guides/submit-results.md) for details.
 
 Build the CPU smoke container with:
 
