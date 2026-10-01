@@ -67,7 +67,7 @@ python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 ```
 
-⬇️💡 #### Installation during anonymous review
+#### ⬇️💡Installation during anonymous review
 
 ***During double-blind review period, the source code is distributed through an anonymized, read-only repository.***
 
@@ -85,7 +85,7 @@ python -m pip install --upgrade pip
 python -m pip install -e .
 ```
 
-To validate the built release artifact rather than an editable checkout:
+**To validate the built release artifact rather than an editable checkout:**
 
 ```bash
 python -m build
