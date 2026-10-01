@@ -59,10 +59,10 @@ authoritative task-to-metric mapping.
 
 DiME-Bench supports Python 3.10-3.12.
 
-### Development installation
+### Development installation ⚠️⚠️ 
 
 ```bash
-git clone https://github.com/DiME-Bench/DiME-Bench.git
+git clone https://github.com/DiME-Bench/DiME-Bench.git %Not the actual link of DiME-Bench. The User_Name is shown as "DiME-Bench" to follow the double-blind review
 cd DiME-Bench
 
 python3.12 -m venv .venv
