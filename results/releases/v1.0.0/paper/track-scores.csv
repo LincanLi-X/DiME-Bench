@@ -1,9 +1,0 @@
-model_id,model_family,track,macro_score,dataset_count,source_run_ids
-llada-8b-instruct,diffusion,track1_general,0.48,1,step12-track1_general-gsm8k_general-dllm
-llama3-8b-instruct,autoregressive,track1_general,0.16,1,step12-track1_general-gsm8k_general-ar
-llada-8b-instruct,diffusion,track2_infilling,0.0,1,step12-track2_infilling-wikitext103-dllm
-llama3-8b-instruct,autoregressive,track2_infilling,0.16380783933880505,1,step12-track2_infilling-wikitext103-ar
-llada-8b-instruct,diffusion,track3_editing,0.84,1,step12-track3_editing-synthetic_repair-dllm
-llama3-8b-instruct,autoregressive,track3_editing,0.0,1,step12-track3_editing-synthetic_repair-ar
-llada-8b-instruct,diffusion,track4_reasoning,0.0,1,step12-track4_reasoning-winogrande_planning-dllm
-llama3-8b-instruct,autoregressive,track4_reasoning,0.32,1,step12-track4_reasoning-winogrande_planning-ar
