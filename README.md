@@ -18,7 +18,7 @@ resumable artifacts, and single- or multi-GPU execution backends.
   <img
     src="assets/DiME-main-figure.png"
     alt="Overview of the DiME-Bench benchmark"
-    width="700"
+    width="750"
   />
 </p>
 
