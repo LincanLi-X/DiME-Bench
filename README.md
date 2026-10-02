@@ -14,6 +14,15 @@ versioned prompts and parsers, AR/dLLM adapters, mechanism diagnostics,
 resumable artifacts, and single- or multi-GPU execution backends.
 
 
+<p align="center">
+  <img
+    src="assets/DiME-main-figure.png"
+    alt="Overview of the DiME-Bench benchmark"
+    width="700"
+  />
+</p>
+
+
 ## Highlights
 
 - **Four mechanism-aligned tracks.** General capability is a control; text
